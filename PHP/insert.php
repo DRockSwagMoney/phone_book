@@ -9,6 +9,7 @@
 
     $output = '';
     if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $id = $_POST["id"];
         $firstname = $_POST["fname"];
         $lastname = $_POST["lname"];
         $phonenumber = $_POST["phonenumber"];
@@ -16,10 +17,10 @@
 
         $sql = "INSERT INTO second_phonebook (firstname, lastname)
                             VALUES ('$firstname', '$lastname')";
-        $phonenumbersql = "INSERT INTO phone_numbers (number)
-                            VALUES ('$phonenumber')";
-        $emailsql = "INSERT INTO emails (email)
-                            VALUES ('$email')";
+        $phonenumbersql = "INSERT INTO phone_numbers (userid, number)
+                            VALUES ('$id', '$phonenumber')";
+        $emailsql = "INSERT INTO emails (userid, email)
+                            VALUES ('$id', '$email')";
         if($conn->query($sql) === TRUE && $conn->query($phonenumbersql) === TRUE && $conn->query($emailsql) === TRUE){
             error_log("Insert Successful");
         } else {

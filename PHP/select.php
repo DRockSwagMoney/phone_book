@@ -23,11 +23,11 @@
             while($row = $result->fetch_assoc()) {
                 $output .=                             
                             '<tr>
-                            <td class="first_name" data-id="'.$row["id"].'">'.$row["firstname"].'</td>
-                            <td class="last_name" data-id="'.$row["id"].'">'.$row["lastname"].'</td>
-                            <td><button id="btn_view" class="btn" name="btn_view" data-id="'.$row["id"].'"><span class="far fa-eye"></span></button>
-                            <td><button id="btn_edit" class="btn" name="btn_edit" data-id="'.$row["id"].'"><span class="far fa-edit"></span></button>
-                            <td><button id="btn_delete" class="btn" name="btn_delete" data-id="'.$row["id"].'"><span class="far fa-trash-alt"></span></button></td>
+                            <td class="first_name" data-id1="'.$row["id"].'">'.$row["firstname"].'</td>
+                            <td class="last_name" data-id2="'.$row["id"].'">'.$row["lastname"].'</td>
+                            <td><button id="btn_view" class="btn" name="btn_view" data-id3="'.$row["id"].'"><span class="far fa-eye"></span></button>
+                            <td><button id="btn_edit" class="btn" name="btn_edit" data-id4="'.$row["id"].'"><span class="far fa-edit"></span></button>
+                            <td><button id="btn_delete" class="btn" name="btn_delete" data-id5="'.$row["id"].'"><span class="far fa-trash-alt"></span></button></td>
                             </tr>
                             ';
             }
