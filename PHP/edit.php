@@ -10,8 +10,8 @@
     $sql = '';
     $id = $_POST["id"];
     $sql = "SELECT * FROM second_phonebook WHERE id = $id";
-    $phonenumbersql = "SELECT * FROM phone_numbers WHERE phonenumberID = $id";
-    $emailsql = "SELECT * FROM emails WHERE emailID = $id";
+    $phonenumbersql = "SELECT * FROM phone_numbers WHERE userid = $id";
+    $emailsql = "SELECT * FROM emails WHERE userid = $id";
 
 
     $result = $conn->query($sql);
@@ -49,8 +49,8 @@
                                         <input class="form-control" type="text" name="editphonenumber" id="editphonenumber" value="'.$row["number"].'"/>
                                     </div>
                                     <div class="col">
-                                        <button type="button" name="addNumber" class="btn btn-primary" value="'.$row["emailID"].'">+</button>
-                                        <button type="button" name="removeNumber" class="btn btn-danger" value="'.$row["emailID"].'">&times;</button>
+                                        <button type="button" name="addNumber" class="btn btn-primary">+</button>
+                                        <button type="button" name="removeNumber" class="btn btn-danger">&times;</button>
                                     </div>
                             </div>';
         }
@@ -61,8 +61,8 @@
                                     <input class="form-control repeatableEmail" type="text" name="editemail" id="editemail" value="'.$row["email"].'"/>
                                 </div>
                                 <div class="col">
-                                    <button type="button" name="addEmail" class="btn btn-primary" value="'.$row["phonenumberID"].'">+</button>
-                                    <button type="button" name="removeEmail" class="btn btn-danger" value="'.$row["emailID"].'">&times;</button>
+                                    <button type="button" name="addEmail" class="btn btn-primary">+</button>
+                                    <button type="button" name="removeEmail" class="btn btn-danger">&times;</button>
                                 </div> 
                             </div>';
                             

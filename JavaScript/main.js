@@ -30,7 +30,7 @@ function join_data() {
 }
 
 $(document).on('click', '#btn_delete', function () {
-    var id = $(this).data("id3");
+    var id = $(this).data("id5");
     if (confirm("Are you sure you want to delete this?")) {
         $.ajax({
             url: "PHP/delete.php",
@@ -93,7 +93,7 @@ $(document).on('click', '#resetBtn', function () {
 });
 
 $(document).on('click', '#btn_view', function () {
-    var id = $(this).data("id4");
+    var id = $(this).data("id3");
         $.ajax({
             url: "PHP/view.php",
             type: "POST",
@@ -107,7 +107,7 @@ $(document).on('click', '#btn_view', function () {
 });
 
 $(document).on('click', '#btn_edit', function () {
-    var id = $(this).data("id5");
+    var id = $(this).data("id4");
     $.ajax({
         url: "PHP/edit.php",
         type: "POST",

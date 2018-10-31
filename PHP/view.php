@@ -9,8 +9,8 @@
     $output = '';
     $sql = '';
     $sql = "SELECT * FROM second_phonebook WHERE id ='".$_POST["id"]."'";
-    $phonenumbersql = "SELECT * FROM phone_numbers WHERE phonenumberID ='".$_POST["id"]."'";
-    $emailsql = "SELECT * FROM emails WHERE emailID ='".$_POST["id"]."'";
+    $phonenumbersql = "SELECT * FROM phone_numbers WHERE userid ='".$_POST["id"]."'";
+    $emailsql = "SELECT * FROM emails WHERE userid ='".$_POST["id"]."'";
 
 
     $result = $conn->query($sql);
