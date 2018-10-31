@@ -86,3 +86,5 @@ Stack trace:
 [30-Oct-2018 21:29:38 Europe/Berlin] Insert Successful
 [30-Oct-2018 21:30:56 Europe/Berlin] Insert Successful
 [30-Oct-2018 21:46:36 Europe/Berlin] Insert Successful
+[31-Oct-2018 21:02:36 Europe/Berlin] Error: INSERT INTO second_phonebook (firstname, lastname)
+                            VALUES ('Daimen', 'Ambers')Cannot add or update a child row: a foreign key constraint fails (`phone_book`.`phone_numbers`, CONSTRAINT `fk_userid_phoneid` FOREIGN KEY (`userid`) REFERENCES `second_phonebook` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
