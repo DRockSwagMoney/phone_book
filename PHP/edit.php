@@ -10,8 +10,8 @@
     $sql = '';
     $id = $_POST["id"];
     $sql = "SELECT * FROM second_phonebook WHERE id = $id";
-    $phonenumbersql = "SELECT * FROM phone_numbers WHERE phonenumberID = $id";
-    $emailsql = "SELECT * FROM emails WHERE emailID = $id";
+    $phonenumbersql = "SELECT * FROM phone_numbers WHERE userID = $id";
+    $emailsql = "SELECT * FROM emails WHERE userid = $id";
 
 
     $result = $conn->query($sql);
