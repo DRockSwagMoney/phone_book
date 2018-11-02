@@ -2,10 +2,13 @@
 $(document).ready(function () {
     fetch_data();
     $('#addNumBtn').click(function () {
-        $('#addNewNumField').append("<div class='row'><div class='col-sm-10'><input type='text' name='phonenumber2' id='phonenumbe2' class='form-control' /></div><div class='col'></div></div><br/>");
+        $('#addNewNumField').append("<div class='row'><div class='col-sm-10'><input type='text' name='phonenumber2' id='phonenumbe2' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='removenum2'>&times;</button></div></div><br/>");
     });
     $('#addEmailBtn').click(function () {
-        $('#addNewEmailField').append("<div class='row'><div class='col-sm-10'><input type='text' name='email2' id='email2' class='form-control' /></div><div class='col'></div></div><br/>");
+        $('#addNewEmailField').append("<div class='row removeemail'><div class='col-sm-10'><input type='text' name='email2' id='email2' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='close'>&times;</button></div></div><br/>");
+    });
+    $('#close').click(function () {
+        $('.removeemail2').remove(); 
     });
 });
 
