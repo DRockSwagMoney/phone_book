@@ -2,10 +2,10 @@
 $(document).ready(function () {
     fetch_data();
     $('#addNumBtn').click(function () {
-        $('#addNewNumField').append("<div id='removenum'><div class='row'><div class='col-sm-10'><input type='text' name='phonenumber2' id='phonenumber2' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='closenum'>&times;</button></div></div><br/></div>");
+        $('#addNewNumField').append("<div id='removenum'><div class='row'><div class='col-sm-10'><input type='text' name='phonenumber' id='phonenumber' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='closenum'>&times;</button></div></div><br/></div>");
     });
     $('#addEmailBtn').click(function () {
-        $('#addNewEmailField').append("<div id='removeemail'> <div class='row'><div class='col-sm-10'><input type='text' name='email2' id='email2' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='closeemail'>&times;</button></div></div><br/></div>");
+        $('#addNewEmailField').append("<div id='removeemail'> <div class='row'><div class='col-sm-10'><input type='text' name='email' id='email' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='closeemail'>&times;</button></div></div><br/></div>");
     });
 });
 $(document).on('click', '#closenum', function () {
@@ -22,6 +22,10 @@ function fetch_data() {
             $('#live_data').html(data);
         }
     });
+}
+
+function increment_Number() {
+    document.getElementbyId('phonenumber').name = "phonenumber5";
 }
 
 function join_data() {
@@ -162,4 +166,5 @@ $(document).on('click', '#saveChanges', function () {
         });
     }
 });
+
 
