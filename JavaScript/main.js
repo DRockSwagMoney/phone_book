@@ -49,7 +49,6 @@ $(document).on('click', '#btn_delete', function () {
 
 $(document).on('click', '#insert', function () {
     event.preventDefault();
-    console.log(id);
     if ($('#fname').val() == '') {
         alert("Enter First Name");
         return false;
