@@ -86,3 +86,25 @@ Stack trace:
 [30-Oct-2018 21:29:38 Europe/Berlin] Insert Successful
 [30-Oct-2018 21:30:56 Europe/Berlin] Insert Successful
 [30-Oct-2018 21:46:36 Europe/Berlin] Insert Successful
+[02-Nov-2018 13:14:58 Europe/Berlin] Error: INSERT INTO second_phonebook (firstname, lastname)
+                            VALUES ('Daimen', 'Ambers')Cannot add or update a child row: a foreign key constraint fails (`phone_book`.`phone_numbers`, CONSTRAINT `fk_userid_phoneid` FOREIGN KEY (`userid`) REFERENCES `second_phonebook` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+[02-Nov-2018 13:15:48 Europe/Berlin] Error: INSERT INTO second_phonebook (firstname, lastname)
+                            VALUES ('Daimen', 'Ambers')Cannot add or update a child row: a foreign key constraint fails (`phone_book`.`phone_numbers`, CONSTRAINT `fk_userid_phoneid` FOREIGN KEY (`userid`) REFERENCES `second_phonebook` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+[02-Nov-2018 13:23:24 Europe/Berlin] PHP Notice:  Undefined index: id in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 12
+[02-Nov-2018 13:23:24 Europe/Berlin] Error: INSERT INTO second_phonebook (firstname, lastname)
+                            VALUES ('Daimen', 'Ambers')Cannot add or update a child row: a foreign key constraint fails (`phone_book`.`phone_numbers`, CONSTRAINT `fk_userid_phoneid` FOREIGN KEY (`userid`) REFERENCES `second_phonebook` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+[02-Nov-2018 13:25:00 Europe/Berlin] PHP Notice:  Undefined index: id in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 12
+[02-Nov-2018 13:25:00 Europe/Berlin] Error: INSERT INTO second_phonebook (firstname, lastname)
+                            VALUES ('Daimen', 'Ambers')Cannot add or update a child row: a foreign key constraint fails (`phone_book`.`phone_numbers`, CONSTRAINT `fk_userid_phoneid` FOREIGN KEY (`userid`) REFERENCES `second_phonebook` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+[02-Nov-2018 13:39:05 Europe/Berlin] PHP Notice:  Undefined index: id in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 12
+[02-Nov-2018 13:39:05 Europe/Berlin] Error: INSERT INTO second_phonebook (firstname, lastname)
+                            VALUES ('Daimen', 'Ambers')Column count doesn't match value count at row 1
+[02-Nov-2018 13:40:39 Europe/Berlin] PHP Notice:  Undefined index: id in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 12
+[02-Nov-2018 13:40:39 Europe/Berlin] Error: INSERT INTO second_phonebook (id, firstname, lastname)
+                            VALUES ('', 'Daimen', 'Ambers')Column count doesn't match value count at row 1
+[02-Nov-2018 13:42:40 Europe/Berlin] Error: INSERT INTO second_phonebook (firstname, lastname)
+                            VALUES ('Daimen', 'Ambers')Column count doesn't match value count at row 1
+[02-Nov-2018 13:43:44 Europe/Berlin] Error: INSERT INTO second_phonebook (id, firstname, lastname)
+                            VALUES ('', 'Daimen', 'Ambers')Column count doesn't match value count at row 1
+[02-Nov-2018 16:58:04 Europe/Berlin] PHP Notice:  Undefined variable: phonenumbersql in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 21
+[02-Nov-2018 16:58:04 Europe/Berlin] PHP Warning:  mysqli::query(): Empty query in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 21

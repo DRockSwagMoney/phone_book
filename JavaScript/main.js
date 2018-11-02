@@ -29,8 +29,10 @@ function join_data() {
     });
 }
 
+
 $(document).on('click', '#btn_delete', function () {
     var id = $(this).data("id5");
+    console.log(id);
     if (confirm("Are you sure you want to delete this?")) {
         $.ajax({
             url: "PHP/delete.php",
@@ -47,6 +49,7 @@ $(document).on('click', '#btn_delete', function () {
 
 $(document).on('click', '#insert', function () {
     event.preventDefault();
+    console.log(id);
     if ($('#fname').val() == '') {
         alert("Enter First Name");
         return false;
@@ -71,6 +74,7 @@ $(document).on('click', '#insert', function () {
             success: function (data) {
                 $('#insertForm')[0].reset();
                 $('#addContact').modal('toggle');
+                alert(data);
                 fetch_data();
                 return true;
             }

@@ -8,9 +8,7 @@
 
 
     $sql = "DELETE FROM second_phonebook WHERE id ='".$_POST["id"]."'";
-    $phonenumbersql = "DELETE FROM phone_numbers WHERE phonenumberid ='".$_POST["id"]."'";
-    $emailsql = "DELETE FROM emails WHERE emailid ='".$_POST["id"]."'";
-    if($conn->query($sql) === TRUE && $conn->query($phonenumbersql) === TRUE && $conn->query($emailsql) === TRUE){
+    if($conn->query($sql) === TRUE){
       echo 'Data Deleted'; 
     }
 ?>

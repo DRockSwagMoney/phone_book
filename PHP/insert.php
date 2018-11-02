@@ -7,7 +7,6 @@
     $dbname = "phone_book";
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    $output = '';
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $firstname = $_POST["fname"];
         $lastname = $_POST["lname"];
@@ -16,14 +15,20 @@
 
         $sql = "INSERT INTO second_phonebook (firstname, lastname)
                             VALUES ('$firstname', '$lastname')";
-        $phonenumbersql = "INSERT INTO phone_numbers (number)
-                            VALUES ('$phonenumber')";
-        $emailsql = "INSERT INTO emails (email)
-                            VALUES ('$email')";
-        if($conn->query($sql) === TRUE && $conn->query($phonenumbersql) === TRUE && $conn->query($emailsql) === TRUE){
-            error_log("Insert Successful");
+        
+        if($conn->query($sql) === TRUE){
+            $last_id = $conn->insert_id;
+            $phonenumbersql = "INSERT INTO phone_numbers (userid, number)
+                            VALUES ('$last_id', '$phonenumber')";
+            $emailsql = "INSERT INTO emails (userid, email)
+                            VALUES ('$last_id', '$email')";
+            if($conn->query($phonenumbersql) === TRUE && $conn->query($emailsql) === TRUE){       
+            
+            echo "Insert Successful. Last ID is: " . $last_id;
+            }
+            
         } else {
-            error_log("Error: " . $sql . $conn->error); 
+            echo "Error: " . $sql . $conn->error; 
         }
     
     }

@@ -33,6 +33,7 @@
                         </div>
                         <div class="modal-body">
                             <form method="post" id="insertForm">
+                                <!--<input type="hidden" name="id" id="id" class="form-control"/>-->
                                 <label>Enter First Name:</label>
                                 <input type="text" name="fname" id="fname" class="form-control" />
                                 <br />
