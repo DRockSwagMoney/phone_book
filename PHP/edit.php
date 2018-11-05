@@ -44,7 +44,8 @@
         $output .=          '<div class="modal-body">
                             <h5><label>Phone Number:</label></h5>';
         while($row = $resultnum->fetch_assoc()) {
-                $output .= '<div class="row newEditPhoneNumberField">
+                $output .= '<div class="newEditPhoneNumberField">
+                                <div class="row">
                                     <div class="col-sm-9">
                                         <input class="form-control" type="text" name="editphonenumber" id="editphonenumber" value="'.$row["number"].'"/>
                                     </div>
@@ -52,6 +53,10 @@
                                         <button type="button" id="addEditNumber" name="addEditNumber" class="btn btn-primary">+</button>
                                         <button type="button" name="removeNumber" class="btn btn-danger">&times;</button>
                                     </div>
+                                </div>
+                                    <div>
+                                        <button id="testButton" type="button">Test</button>
+                                    <div id="testdiv"></div>
                             </div>';
         }
                 $output .= '<h5><label>Email:</label></h5>';
@@ -65,6 +70,8 @@
                                         <button type='button' id='addEditEmail' name='addEditEmail' class='btn btn-primary'>+</button>
                                     </div> 
                                 </div>
+                                        <!--Test Area-->
+
                             </div>";
                             
         }

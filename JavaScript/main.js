@@ -21,11 +21,6 @@ $(document).ready(function () {
         $('#newEditNumberField').append("<div id='removeeditnum'><div class='row'><div class='col-sm-10'><input type='text' name='phonenumber' id='phonenumber' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='closeeditemail'>&times;</button></div></div><br/></div>");
     });
 
-
-    //test button
-    $('#testButton').click(function () {
-        $('#testdiv').load('HTML/editemail.html');
-    });
 });
 
 //Removes the row for the new number
@@ -195,6 +190,20 @@ $(document).on('click', '#saveChanges', function () {
             }
         });
     }
+});
+
+//test button
+$(document).on('click', '#testButton', function () {
+    $.get('HTML/editemail.html', function () {
+        $('#testdiv').load('HTML/editemail.html')
+    });
+});
+
+//Actual test for edit email button
+$(document).on('click', '#addEditEmail', function () {
+    $.get('HTML/editemail.html', function () {
+        $('#newEditEmailField').load('HTML/editemail.html')
+    });
 });
 
 

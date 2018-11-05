@@ -24,11 +24,7 @@
             <button class="btn btn-danger" id="resetBtn" type="button">Reset</button>
         </div>
 
-        <!--Test Area-->
-        <div>
-            <button id="testButton" type="button">Test</button>
-            <div id="testdiv"></div>
-        </div>
+
 
         <div id="addContact" class="modal fade">
                 <div class="modal-dialog">
