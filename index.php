@@ -52,7 +52,6 @@
                                     </div>
                                     <br/>
                                 </div>
-                                <br/>
                                 <label>Enter Email(s):</label>
                                 <div id="addNewEmailField">
                                     <div class="row">
@@ -64,13 +63,13 @@
                                         </div>
                                     </div>
                                     <br/>
-                                </div>
-                                
-                                <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success"/>
-                            </form>
+                                </div>                              
+                            
                         </div>
                         <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                            <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success"/>
+                            </form>
                         </div>
                     </div>
                 </div>

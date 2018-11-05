@@ -24,7 +24,7 @@
                             VALUES ('$last_id', '$email')";
             if($conn->query($phonenumbersql) === TRUE && $conn->query($emailsql) === TRUE){       
             
-            echo "Insert Successful. Last ID is: " . $last_id;
+            echo "Insert Successful";
             }
             
         } else {
