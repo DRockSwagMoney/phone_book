@@ -219,7 +219,7 @@ function removeInputs() {
     $('#removeemail').remove();
 }
 
-if ($('#addContact').modal('toggle')) {
+$(document).on('hidden.bs.modal', '#addContact', function() {
     $('#removenum').remove();
     $('#removeemail').remove();
-}
+});
