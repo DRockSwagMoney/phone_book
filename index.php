@@ -46,7 +46,7 @@
                                 <div id="addNewNumField">
                                     <div class="row">
                                         <div class="col-sm-10">
-                                            <input type="text" name="phonenumber" id="phonenumber" class="form-control" />
+                                            <input type="text" name="phonenumber[]" id="phonenumber" class="form-control" />
                                         </div>
                                         <div class="col">
                                             <button type="button" class="btn btn-primary" name="addNumBtn" id="addNumBtn">+</button>

@@ -3,11 +3,11 @@ $(document).ready(function () {
     fetch_data();
     //Button to add phone number in add contact function
     $('#addNumBtn').click(function () {
-        $('#addNewNumField').append("<div id='removenum'><div class='row'><div class='col-sm-10'><input type='text' name='phonenumber' id='phonenumber' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='closenum'>&times;</button></div></div><br/></div>");
+        $('#addNewNumField').append("<div id='removenum'><div class='row'><div class='col-sm-10'><input type='text' name='phonenumber[]' id='phonenumber' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='closenum'>&times;</button></div></div><br/></div>");
     });
     //Button to add email in add contact function
     $('#addEmailBtn').click(function () {
-        $('#addNewEmailField').append("<div id='removeemail'> <div class='row'><div class='col-sm-10'><input type='text' name='email' id='email' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='closeemail'>&times;</button></div></div><br/></div>");
+        $('#addNewEmailField').append("<div id='removeemail'> <div class='row'><div class='col-sm-10'><input type='text' name='email[]' id='email' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='closeemail'>&times;</button></div></div><br/></div>");
     });
 
 
@@ -97,6 +97,7 @@ $(document).on('click', '#insert', function () {
             type: "POST",
             data: $('#insertForm').serialize(),
             success: function (data) {
+                console.log($('#insertForm').serialize());
                 $('#insertForm')[0].reset();
                 $('#addContact').modal('toggle');
                 removeInputs();

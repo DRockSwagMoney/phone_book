@@ -10,7 +10,7 @@
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $firstname = $_POST["fname"];
         $lastname = $_POST["lname"];
-        $phonenumber = $_POST["phonenumber"];
+        $phonenumber =  $_POST["phonenumber"];
         $email = $_POST["email"];
 
         $sql = "INSERT INTO second_phonebook (firstname, lastname)
@@ -18,18 +18,21 @@
         
         if($conn->query($sql) === TRUE){
             $last_id = $conn->insert_id;
-            $phonenumbersql = "INSERT INTO phone_numbers (userid, number)
-                            VALUES ('$last_id', '$phonenumber')";
-            $emailsql = "INSERT INTO emails (userid, email)
-                            VALUES ('$last_id', '$email')";
-            if($conn->query($phonenumbersql) === TRUE && $conn->query($emailsql) === TRUE){       
-            
-            echo "Insert Successful";
+            foreach($phonenumber as $numvalue) {
+                $phonenumbersql = "INSERT INTO phone_numbers (userid, number)
+                            VALUES ('$last_id', '$numvalue')";
+                $conn->query($phonenumbersql);
             }
-            
+            foreach($email as $emailvalue) {
+            $emailsql = "INSERT INTO emails (userid, email)
+                            VALUES ('$last_id', '$emailvalue')";
+             $conn->query($emailsql);
+            }
+            echo "Insert Successful";
         } else {
             echo "Error: " . $sql . $conn->error; 
         }
+
     
     }
 

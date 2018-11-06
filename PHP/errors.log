@@ -108,3 +108,15 @@ Stack trace:
                             VALUES ('', 'Daimen', 'Ambers')Column count doesn't match value count at row 1
 [02-Nov-2018 16:58:04 Europe/Berlin] PHP Notice:  Undefined variable: phonenumbersql in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 21
 [02-Nov-2018 16:58:04 Europe/Berlin] PHP Warning:  mysqli::query(): Empty query in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 21
+[06-Nov-2018 16:27:56 Europe/Berlin] PHP Notice:  Array to string conversion in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 22
+[06-Nov-2018 16:29:18 Europe/Berlin] PHP Notice:  Undefined index: phonenumber[] in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 13
+[06-Nov-2018 16:33:19 Europe/Berlin] PHP Notice:  Undefined index: phonenumber[] in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 13
+[06-Nov-2018 16:33:49 Europe/Berlin] PHP Notice:  Array to string conversion in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 22
+[06-Nov-2018 16:37:56 Europe/Berlin] PHP Notice:  Undefined index: phonenumber0 in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 14
+[06-Nov-2018 16:37:56 Europe/Berlin] PHP Notice:  Undefined index: phonenumber1 in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 15
+[06-Nov-2018 16:37:56 Europe/Berlin] PHP Notice:  Array to string conversion in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 24
+[06-Nov-2018 16:38:23 Europe/Berlin] PHP Notice:  Array to string conversion in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 24
+[06-Nov-2018 16:42:25 Europe/Berlin] PHP Notice:  Array to string conversion in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 24
+[06-Nov-2018 16:52:38 Europe/Berlin] PHP Notice:  Array to string conversion in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 24
+[06-Nov-2018 16:57:14 Europe/Berlin] PHP Notice:  Array to string conversion in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 24
+[06-Nov-2018 17:10:53 Europe/Berlin] PHP Notice:  Array to string conversion in C:\Users\dambers\New folder\htdocs\second_pb\PHP\insert.php on line 24
