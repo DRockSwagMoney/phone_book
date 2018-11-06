@@ -27,6 +27,7 @@
                                     SET number = '$numvalue'
                                     WHERE id = '$numidvalue'";
                 $conn->query($phonenumbersql);
+                //break;
                 }
             }          
         
