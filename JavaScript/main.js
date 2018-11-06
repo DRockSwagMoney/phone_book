@@ -53,17 +53,8 @@ function increment_Number() {
     document.getElementbyId('phonenumber').name = "phonenumber5";
 }
 
-function join_data() {
-    $.ajax({
-        url: "PHP/join.php",
-        method: "post",
-        success: function (data) {
-            fetch_data();
-        }
-    });
-}
 
-
+//Delete Button
 $(document).on('click', '#btn_delete', function () {
     var id = $(this).data("id5");
     console.log(id);
@@ -81,6 +72,7 @@ $(document).on('click', '#btn_delete', function () {
     }
 });
 
+//Add contact modal
 $(document).on('click', '#insert', function () {
     event.preventDefault();
     if ($('#fname').val() == '') {
@@ -116,6 +108,7 @@ $(document).on('click', '#insert', function () {
     }
 });
 
+//Resets the entire database. (Does not work anymore with foreign keys)
 $(document).on('click', '#resetBtn', function () {
     if (confirm("Are you sure you would like to reset all tables?")) {
         $.ajax({
@@ -130,6 +123,7 @@ $(document).on('click', '#resetBtn', function () {
     }
 });
 
+//View modal
 $(document).on('click', '#btn_view', function () {
     var id = $(this).data("id3");
         $.ajax({
@@ -144,6 +138,7 @@ $(document).on('click', '#btn_view', function () {
         });
 });
 
+//Edit modal
 $(document).on('click', '#btn_edit', function () {
     var id = $(this).data("id4");
     $.ajax({
@@ -158,6 +153,7 @@ $(document).on('click', '#btn_edit', function () {
     });
 });
 
+//Submit button for the edit feature
 $(document).on('click', '#saveChanges', function () {
     event.preventDefault();
     if ($('#editfname').val() == '') {
@@ -213,12 +209,12 @@ $(document).on('click', '#addEditNumber', function () {
         $('#newEditPhoneNumberField').append(data);
     });
 });
-
+//Hides extra fields in the Add Contact modal after submission
 function removeInputs() {
     $('#removenum').remove();
     $('#removeemail').remove();
 }
-
+//Hides extra fields in the Add Contact modal
 $(document).on('hidden.bs.modal', '#addContact', function() {
     $('#removenum').remove();
     $('#removeemail').remove();
