@@ -9,6 +9,8 @@
     $output = '';
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST["editid"];
+        $numid = $_POST["editnumberid"];
+        $emailid = $_POST["editemailid"];
         $firstname = $_POST["editfname"];
         $lastname = $_POST["editlname"];
         $phonenumber = $_POST["editphonenumber"];
@@ -18,17 +20,20 @@
                     SET firstname='$firstname', lastname='$lastname'
                     WHERE id = '$id'";
         if($conn->query($sql) === TRUE){
-            foreach($phonenumber as $numvalue) {
+            foreach($numid as $numidvalue) {
+                foreach($phonenumber as $numvalue) {
+                
                 $phonenumbersql = "UPDATE phone_numbers
                                     SET number = '$numvalue'
-                                    WHERE userid = '$id'";
+                                    WHERE id = '$numidvalue'";
                 $conn->query($phonenumbersql);
+                }
             }          
         
             foreach($email as $emailvalue) {
                 $emailsql = "UPDATE emails 
                             SET email = '$emailvalue'
-                            WHERE userid = '$id'";
+                            WHERE id = '$emailid'";
                 $conn->query($emailsql);
             }
             echo "Update Successful";

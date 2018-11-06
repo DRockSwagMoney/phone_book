@@ -28,13 +28,14 @@
                             </div>';
         }
         $output .=          '<div class="modal-body">
-                            <label>Phone Number</label>';
+                            <h5><label>Phone Number</label></h5>';
         while($row = $resultnum->fetch_assoc()) {
-                $output .= '<h5>'.$row["number"].'</h5>';
+                $output .= '<div>'.$row["number"].'</div>';
         }
-                $output .= '<label>Email</label>';
+                $output .= '<br/>
+                            <h5><label>Email</label></h5>';
         while($row = $resultemail->fetch_assoc()) {
-                $output .= '<h5>'.$row["email"].'</h5>';
+                $output .= '<div>'.$row["email"].'</div>';
         }
         $output .=          '</div> 
                             <div class="modal-footer">

@@ -47,6 +47,7 @@
                 $output .= '<div id="newEditPhoneNumberField">
                                 <div class="row">
                                     <div class="col-sm-9">
+                                        <input type="hidden" style="display:none" class="form-control" name="editnumberid[]" value="'.$row["id"].'"/>
                                         <input class="form-control" type="text" name="editphonenumber[]" id="editphonenumber" value="'.$row["number"].'"/>
                                     </div>
                                     <div class="col">
@@ -61,6 +62,7 @@
                 $output .= '<div id="newEditEmailField">
                                 <div class="row">
                                     <div class="col-sm-9">
+                                        <input type="hidden" style="display:none" class="form-control" name="editemailid[]" value="'.$row["id"].'"/>
                                         <input class="form-control" type="text" name="editemail[]" id="editemail" value="'.$row["email"].'"/>
                                     </div>
                                     <div class="col">
