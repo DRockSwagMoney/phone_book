@@ -17,14 +17,20 @@
         $sql = "UPDATE second_phonebook 
                     SET firstname='$firstname', lastname='$lastname'
                     WHERE id = '$id'";
-                    
-        $phonenumbersql = "UPDATE phone_numbers
-                                SET number = '$phonenumber'
-                                WHERE userid = '$id'";
-        $emailsql = "UPDATE emails 
-                        SET email = '$email'
-                        WHERE userid = '$id'";
-        if($conn->query($sql) === TRUE && $conn->query($phonenumbersql) === TRUE && $conn->query($emailsql) === TRUE){
+        if($conn->query($sql) === TRUE){
+            foreach($phonenumber as $numvalue) {
+                $phonenumbersql = "UPDATE phone_numbers
+                                    SET number = '$numvalue'
+                                    WHERE userid = '$id'";
+                $conn->query($phonenumbersql);
+            }          
+        
+            foreach($email as $emailvalue) {
+                $emailsql = "UPDATE emails 
+                            SET email = '$emailvalue'
+                            WHERE userid = '$id'";
+                $conn->query($emailsql);
+            }
             echo "Update Successful";
         } else {
             echo "Error: " . $sql . "<br/>" . $phonenumbersql . "<br/>" . $emailsql . "<br/>" . $conn->error; 

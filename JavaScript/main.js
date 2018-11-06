@@ -91,6 +91,7 @@ $(document).on('click', '#insert', function () {
             type: "POST",
             data: $('#insertForm').serialize(),
             success: function (data) {
+                console.log($('#insertForm').serialize());
                 $('#insertForm')[0].reset();
                 $('#addContact').modal('toggle');
                 removeInputs();
