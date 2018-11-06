@@ -35,9 +35,9 @@ $(document).on('click', '#closeeditemail', function () {
 $(document).on('click', '#closeeditnum', function () {
     $('#removeeditnum').remove();
 });
-//Removes the row for the edit new number
+//Removes the row for the edit new email
 $(document).on('click', '#closeeditemail', function () {
-    $('#removeeditnum').remove();
+    $('#removeeditemail').remove();
 });
 function fetch_data() {
     $.ajax({
@@ -107,6 +107,7 @@ $(document).on('click', '#insert', function () {
             success: function (data) {
                 $('#insertForm')[0].reset();
                 $('#addContact').modal('toggle');
+                removeInputs();
                 alert(data);
                 fetch_data();
                 return true;
@@ -201,9 +202,24 @@ $(document).on('click', '#testButton', function () {
 
 //Actual test for edit email button
 $(document).on('click', '#addEditEmail', function () {
-    $.get('HTML/editemail.html', function () {
-        $('#newEditEmailField').load('HTML/editemail.html')
+    $.get('HTML/editemail.html', function (data) {
+        $('#newEditEmailField').append(data);
     });
 });
 
+//Actual test for edit phone number button
+$(document).on('click', '#addEditNumber', function () {
+    $.get('HTML/editnumber.html', function (data) {
+        $('#newEditPhoneNumberField').append(data);
+    });
+});
 
+function removeInputs() {
+    $('#removenum').remove();
+    $('#removeemail').remove();
+}
+
+if ($('#addContact').modal('toggle')) {
+    $('#removenum').remove();
+    $('#removeemail').remove();
+}
