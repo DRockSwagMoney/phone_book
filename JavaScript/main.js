@@ -49,15 +49,9 @@ function fetch_data() {
     });
 }
 
-function increment_Number() {
-    document.getElementbyId('phonenumber').name = "phonenumber5";
-}
-
-
 //Delete Button
 $(document).on('click', '#btn_delete', function () {
     var id = $(this).data("id5");
-    console.log(id);
     if (confirm("Are you sure you want to delete this?")) {
         $.ajax({
             url: "PHP/delete.php",
@@ -97,7 +91,6 @@ $(document).on('click', '#insert', function () {
             type: "POST",
             data: $('#insertForm').serialize(),
             success: function (data) {
-                console.log($('#insertForm').serialize());
                 $('#insertForm')[0].reset();
                 $('#addContact').modal('toggle');
                 removeInputs();
