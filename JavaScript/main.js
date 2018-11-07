@@ -10,17 +10,6 @@ $(document).ready(function () {
         $('#addNewEmailField').append("<div id='removeemail'> <div class='row'><div class='col-sm-10'><input type='text' name='email[]' id='email' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='closeemail'>&times;</button></div></div><br/></div>");
     });
 
-
-    //Button to add email in edit function
-    $('#addEditEmail').click(function () {
-        $('#newEditEmailField').append("<div id='removeeditemail'> <div class='row'><div class='col-sm-9'><input class='form-control' type ='text' name ='editemail' id='editemail'/></div ><div class='col'><button type='button' id='removeeditemail'name='removeEmail' class='btn btn-danger'>&times;</button></div></div><br/></div>");
-    });
-
-    //Button to add phone number in add contact function
-    $('#addEditNumber').click(function () {
-        $('#newEditNumberField').append("<div id='removeeditnum'><div class='row'><div class='col-sm-10'><input type='text' name='phonenumber' id='phonenumber' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='closeeditemail'>&times;</button></div></div><br/></div>");
-    });
-
 });
 
 //Removes the row for the new number

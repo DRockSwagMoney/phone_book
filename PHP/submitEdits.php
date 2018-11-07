@@ -20,15 +20,13 @@
                     SET firstname='$firstname', lastname='$lastname'
                     WHERE id = '$id'";
         if($conn->query($sql) === TRUE){
-            foreach($numid as $numidvalue) {
-                foreach($phonenumber as $numvalue) {
+            $combinedarray = array_combine($numid, $phonenumber);
+            foreach($combinedarray as $value) {
                 
                 $phonenumbersql = "UPDATE phone_numbers
-                                    SET number = '$numvalue'
-                                    WHERE id = '$numidvalue'";
+                                    SET number = '$numid'
+                                    WHERE id = '$phonenumber'";
                 $conn->query($phonenumbersql);
-                //break;
-                }
             }          
         
             foreach($email as $emailvalue) {
@@ -38,6 +36,7 @@
                 $conn->query($emailsql);
             }
             echo "Update Successful";
+            echo $combinedarray;
         } else {
             echo "Error: " . $sql . "<br/>" . $phonenumbersql . "<br/>" . $emailsql . "<br/>" . $conn->error; 
         }

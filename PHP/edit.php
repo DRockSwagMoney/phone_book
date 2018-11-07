@@ -51,7 +51,7 @@
                                         <input class="form-control" type="text" name="editphonenumber[]" id="editphonenumber" value="'.$row["number"].'"/>
                                     </div>
                                     <div class="col">
-                                        <button type="button" id="addEditNumber" name="addEditNumber" class="btn btn-primary">+</button>
+                                        <button type="button" id="addEditNumber" data-id6="'.$row["id"].'" name="addEditNumber" class="btn btn-primary">+</button>
                                     </div>
                                 </div>
                                 <br/>
