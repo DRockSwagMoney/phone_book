@@ -9,34 +9,45 @@
     $output = '';
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST["editid"];
-        $numid = $_POST["editnumberid"];
-        $emailid = $_POST["editemailid"];
         $firstname = $_POST["editfname"];
         $lastname = $_POST["editlname"];
+
+        $numid = $_POST["editnumberid"];
+        $numidlength = count($numid);
         $phonenumber = $_POST["editphonenumber"];
+        $phonelength = count($phonenumber);
+        //$newphonenumber = $_POST["neweditphonenumber"];
+
+        $emailid = $_POST["editemailid"];
+        $emailidlength = count($emailid);
         $email = $_POST["editemail"];
+        $emaillength = count($email);
+        //$newemail = $_POST["neweditemail"];
 
         $sql = "UPDATE second_phonebook 
                     SET firstname='$firstname', lastname='$lastname'
                     WHERE id = '$id'";
         if($conn->query($sql) === TRUE){
-            $combinedarray = array_combine($numid, $phonenumber);
-            foreach($combinedarray as $value) {
-                
+        $y=0;
+        $z=0;
+            for($x = 0; $x < $numidlength; $x++) {
                 $phonenumbersql = "UPDATE phone_numbers
-                                    SET number = '$numid'
-                                    WHERE id = '$phonenumber'";
+                                    SET number = '$phonenumber[$y]'
+                                    WHERE id = '$numid[$x]'";
                 $conn->query($phonenumbersql);
-            }          
-        
-            foreach($email as $emailvalue) {
-                $emailsql = "UPDATE emails 
-                            SET email = '$emailvalue'
-                            WHERE id = '$emailid'";
-                $conn->query($emailsql);
+                $y++;
+                
             }
+ 
+            foreach($emailid as $emailidvalue) {
+                    $emailsql = "UPDATE emails 
+                                SET email = '$email[$z]'
+                                WHERE id = '$emailidvalue'";
+                    $conn->query($emailsql);
+                    $z++;
+            }
+
             echo "Update Successful";
-            echo $combinedarray;
         } else {
             echo "Error: " . $sql . "<br/>" . $phonenumbersql . "<br/>" . $emailsql . "<br/>" . $conn->error; 
         }

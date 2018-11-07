@@ -7,7 +7,8 @@
     $conn = new mysqli($servername, $username, $password, $dbname);
 
     $output = '';
-    $sql = "SELECT * FROM second_phonebook";
+    $sql = "SELECT * FROM second_phonebook
+            ORDER BY firstname ASC";
     $result = $conn->query($sql);
     $output .= '
                 <div class="table-responsive">

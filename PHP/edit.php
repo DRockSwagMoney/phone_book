@@ -42,10 +42,10 @@
                             </div>';
         }
         $output .=          '<div class="modal-body">
-                            <h5><label>Phone Number:</label></h5>';
+                            <h5><label>Phone Number:</label></h5>
+                            <div id="newEditPhoneNumberField">';
         while($row = $resultnum->fetch_assoc()) {
-                $output .= '<div id="newEditPhoneNumberField">
-                                <div class="row">
+                $output .= '    <div class="row">
                                     <div class="col-sm-9">
                                         <input type="hidden" style="display:none" class="form-control" name="editnumberid[]" value="'.$row["id"].'"/>
                                         <input class="form-control" type="text" name="editphonenumber[]" id="editphonenumber" value="'.$row["number"].'"/>
@@ -54,13 +54,13 @@
                                         <button type="button" id="addEditNumber" data-id6="'.$row["id"].'" name="addEditNumber" class="btn btn-primary">+</button>
                                     </div>
                                 </div>
-                                <br/>
-                            </div>';
+                                <br/>';
         }
-                $output .= '<h5><label>Email:</label></h5>';
+                $output .= '</div>
+                            <h5><label>Email:</label></h5>
+                            <div id="newEditEmailField">';
         while($row = $resultemail->fetch_assoc()) {
-                $output .= '<div id="newEditEmailField">
-                                <div class="row">
+                $output .= '    <div class="row">
                                     <div class="col-sm-9">
                                         <input type="hidden" style="display:none" class="form-control" name="editemailid[]" value="'.$row["id"].'"/>
                                         <input class="form-control" type="text" name="editemail[]" id="editemail" value="'.$row["email"].'"/>
@@ -69,11 +69,9 @@
                                         <button type="button" id="addEditEmail" name="addEditEmail" class="btn btn-primary">+</button>
                                     </div> 
                                 </div>
-                                <br/>
-                            </div>';
-                            
+                            <br/>';                            
         }
-        $output .=          '</div> 
+        $output .=          '</div>
                             <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
                             
