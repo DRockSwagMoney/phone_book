@@ -185,13 +185,6 @@ $(document).on('click', '#saveChanges', function () {
     }
 });
 
-//test button
-$(document).on('click', '#testButton', function () {
-    $.get('HTML/editemail.html', function () {
-        $('#testdiv').load('HTML/editemail.html')
-    });
-});
-
 //Actual test for edit email button
 $(document).on('click', '#addEditEmail', function () {
     $.get('HTML/editemail.html', function (data) {
