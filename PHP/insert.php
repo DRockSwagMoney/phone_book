@@ -1,5 +1,4 @@
 <?php 
-    ini_set('error_log', 'errors.log'); // Logging file 
     //Create Connection
     $servername = "127.0.0.1";
     $username = "root";
