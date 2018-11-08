@@ -42,31 +42,53 @@
                             </div>';
         }
         $output .=          '<div class="modal-body">
-                            <h5><label>Phone Number:</label></h5>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <h5><label>Phone Number:</label></h5>
+                                    </div>
+                                    <div class="col">
+                                        <div style="text-align:right"><button type="button" id="addEditNumber" name="addEditNumber" class="btn btn-primary">Add</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
                             <div id="newEditPhoneNumberField">';
         while($row = $resultnum->fetch_assoc()) {
-                $output .= '    <div class="row">
-                                    <div class="col-sm-9">
+                $output .= '<div id="'.$row["id"].'">    
+                                <div class="row">
+                                    <div class="col-sm-10">
                                         <input type="hidden" style="display:none" class="form-control" name="editnumberid[]" value="'.$row["id"].'"/>
                                         <input class="form-control" type="text" name="editphonenumber[]" id="editphonenumber" value="'.$row["number"].'"/>
                                     </div>
                                     <div class="col">
-                                        <button type="button" id="addEditNumber" data-id6="'.$row["id"].'" name="addEditNumber" class="btn btn-primary">+</button>
+                                        <button type="button" id="deleteEditNumber" data-id6="'.$row["id"].'" name="deleteEditNumber" class="btn btn-danger">&times;</button>
                                     </div>
                                 </div>
+                            </div>
                                 <br/>';
         }
                 $output .= '</div>
-                            <h5><label>Email:</label></h5>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <h5><label>Email:</label></h5>
+                                    </div>
+                                    <div class="col">
+                                        <div style="text-align:right"><button type="button" id="addEditEmail" name="addEditEmail" class="btn btn-primary">Add</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
                             <div id="newEditEmailField">';
         while($row = $resultemail->fetch_assoc()) {
                 $output .= '    <div class="row">
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-10">
                                         <input type="hidden" style="display:none" class="form-control" name="editemailid[]" value="'.$row["id"].'"/>
                                         <input class="form-control" type="text" name="editemail[]" id="editemail" value="'.$row["email"].'"/>
                                     </div>
                                     <div class="col">
-                                        <button type="button" id="addEditEmail" name="addEditEmail" class="btn btn-primary">+</button>
+                                        <button type="button" id="deleteEditEmail" data-id7="'.$row["id"].'" name="deleteEditEmail" class="btn btn-danger">&times;</button>
                                     </div> 
                                 </div>
                             <br/>';                            

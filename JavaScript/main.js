@@ -20,9 +20,35 @@ $(document).on('click', '#closenum', function () {
 $(document).on('click', '#closeeditemail', function () {
     $('#removeemail').remove();
 });
+
+$(document).on('click', '#deleteEditEmail', function () {
+    var id = $(this).data("id7");
+    $('#' + id).remove();
+    $.ajax({
+        url: "PHP/editDelete.php",
+        method: "post",
+        data: { id: id },
+        success: function (data) {
+            alert(data);
+        }
+    });
+});
 //Removes the row for the edit new number
 $(document).on('click', '#closeeditnum', function () {
     $('#removeeditnum').remove();
+});
+//Removes the row for the edit new number
+$(document).on('click', '#deleteEditNumber', function () {
+    var id = $(this).data("id6");
+    $('#' + id).remove();
+    $.ajax({
+        url: "PHP/editNumDelete.php",
+        method: "post",
+        data: { id: id },
+        success: function (data) {
+            alert(data);
+        }
+    });
 });
 //Removes the row for the edit new email
 $(document).on('click', '#closeeditemail', function () {
@@ -92,20 +118,6 @@ $(document).on('click', '#insert', function () {
     }
 });
 
-//Resets the entire database. (Does not work anymore with foreign keys)
-$(document).on('click', '#resetBtn', function () {
-    if (confirm("Are you sure you would like to reset all tables?")) {
-        $.ajax({
-            url: "PHP/reset.php",
-            type: "POST",
-            dataType: "text",
-            success: function (data) {
-                alert(data);
-                fetch_data();
-            }
-        });
-    }
-});
 
 //View modal
 $(document).on('click', '#btn_view', function () {

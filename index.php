@@ -21,7 +21,6 @@
 
         <div class="text-center">
             <button class="btn btn-success" data-target="#addContact" data-toggle="modal" type="button">Add Contact</button>
-            <button class="btn btn-danger" id="resetBtn" type="button">Reset</button>
         </div>
 
 

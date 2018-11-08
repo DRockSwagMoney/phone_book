@@ -15,14 +15,12 @@
         $numid = $_POST["editnumberid"];
         $numidlength = count($numid);
         $phonenumber = $_POST["editphonenumber"];
-        $phonelength = count($phonenumber);
-        //$newphonenumber = $_POST["neweditphonenumber"];
+        $phonelength = count($phonenumber);        
 
         $emailid = $_POST["editemailid"];
         $emailidlength = count($emailid);
         $email = $_POST["editemail"];
         $emaillength = count($email);
-        //$newemail = $_POST["neweditemail"];
 
         $sql = "UPDATE second_phonebook 
                     SET firstname='$firstname', lastname='$lastname'
@@ -38,6 +36,15 @@
                 $y++;
                 
             }
+            if(isset($_POST["neweditphonenumber"]) === TRUE) {
+            $newphonenumber = $_POST["neweditphonenumber"];
+            foreach($newphonenumber as $newnumvalue) {
+                $phonenumbersql = "INSERT INTO phone_numbers (userid, number)
+                            VALUES ('$id', '$newnumvalue')";
+                $conn->query($phonenumbersql);
+            }
+}
+            
  
             foreach($emailid as $emailidvalue) {
                     $emailsql = "UPDATE emails 
@@ -46,7 +53,14 @@
                     $conn->query($emailsql);
                     $z++;
             }
-
+            if(isset($_POST["neweditemail"]) === TRUE) {
+            $newemail = $_POST["neweditemail"];
+                foreach($newemail as $newemailvalue) {
+                    $emailsql = "INSERT INTO emails (userid, email)
+                                VALUES ('$id', '$newemailvalue')";
+                    $conn->query($emailsql);
+                }
+            }
             echo "Update Successful";
         } else {
             echo "Error: " . $sql . "<br/>" . $phonenumbersql . "<br/>" . $emailsql . "<br/>" . $conn->error; 
