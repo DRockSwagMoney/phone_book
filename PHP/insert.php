@@ -6,9 +6,17 @@
     $dbname = "phone_book";
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    $stmt = $conn->prepare("INSERT INTO second_phonebook (firstname, lastname)
+    $names = $conn->prepare("INSERT INTO second_phonebook (firstname, lastname)
                             VALUES (?, ?)");
-    $stmt->bind_param("ss", $firstname, $lastname);
+    $names->bind_param("ss", $firstname, $lastname);
+
+    $numbers = $conn->prepare("INSERT INTO phone_numbers (userid, number)
+                            VALUES (?, ?)");
+    $numbers->bind_param("is", $last_id, $numvalue);
+
+    $emails = $conn->prepare("INSERT INTO emails (userid, email)
+                            VALUES (?, ?)");
+    $emails->bind_param("is", $last_id, $emailvalue);
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $firstname = $_POST["fname"];
@@ -16,23 +24,20 @@
         $phonenumber =  $_POST["phonenumber"];
         $email = $_POST["email"];
 
-        $stmt->execute();
-        /*$sql = "INSERT INTO second_phonebook (firstname, lastname)
-                            VALUES ('$firstname', '$lastname')";*/
-        
+        $names->execute();        
             $last_id = $conn->insert_id;
             foreach($phonenumber as $numvalue) {
                 $phonenumbersql = "INSERT INTO phone_numbers (userid, number)
                             VALUES ('$last_id', '$numvalue')";
-                $conn->query($phonenumbersql);
+                $numbers->execute();
             }
+
             foreach($email as $emailvalue) {
-            $emailsql = "INSERT INTO emails (userid, email)
+                $emailsql = "INSERT INTO emails (userid, email)
                             VALUES ('$last_id', '$emailvalue')";
-             $conn->query($emailsql);
+                $emails->execute();
             }
-            echo "Insert Successful";
-            var_dump($phonenumber);
+        echo "Insert Successful";
         } else {
             echo "Error: " . $sql . $conn->error; 
         }
