@@ -25,7 +25,7 @@ $(document).on('click', '#deleteEditEmail', function () {
     var id = $(this).data("id7");
     $('#' + id).remove();
     $.ajax({
-        url: "PHP/editDelete.php",
+        url: "PHP/editEmailDelete.php",
         method: "post",
         data: { id: id },
         success: function (data) {
