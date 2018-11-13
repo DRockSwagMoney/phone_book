@@ -19,7 +19,7 @@
     $numbers = $conn->prepare("UPDATE phone_numbers
                                 SET number=?
                                 WHERE id=?");
-    $numbers->bind_param("si", $phonenumber[$y], $numid[$x]);
+    $numbers->bind_param("si", $phonenumber[], $numid[]);
 
     $emails = $conn->prepare("UPDATE emails 
                             SET email=?
@@ -42,16 +42,27 @@
         $emaillength = count($email);
 
         $names->execute();
-
-            for($x = 0; $x < $numidlength; $x++) {
-                /*$phonenumbersql = "UPDATE phone_numbers
+        $param=[];
+            /*for($x = 0; $x < $numidlength; $x++) {
+                $phonenumbersql = "UPDATE phone_numbers
                                     SET number = '$phonenumber[$y]'
                                     WHERE id = '$numid[$x]'";
-                $conn->query($phonenumbersql);*/
+                $conn->query($phonenumbersql);
                 $numbers->execute();
                 $y++;
                 
+            }*/
+            foreach($phonenumber as $num) {
+                $param[$x] = $num;
+                $x++;
             }
+            foreach($numid as $id) {
+                $idparam[$y] = $id;
+                $y++;
+            }
+            $numbers->execute();
+
+
             if(isset($_POST["neweditphonenumber"]) === TRUE) {
             $newphonenumber = $_POST["neweditphonenumber"];
                 foreach($newphonenumber as $newnumvalue) {
@@ -79,6 +90,8 @@
             }
     echo "Update Successful";
     var_dump($numid);
+    var_dump($phonenumber);
+    var_dump($param);
     } else {
         echo "Error: " . $sql . "<br/>" . $phonenumbersql . "<br/>" . $emailsql . "<br/>" . $conn->error; 
     }
