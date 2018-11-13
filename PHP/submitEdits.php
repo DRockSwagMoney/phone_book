@@ -6,7 +6,26 @@
     $dbname = "phone_book";
     $conn = new mysqli($servername, $username, $password, $dbname);
 
+    $x=0;
+    $y=0;
+    $z=0;
     $output = '';
+    $names = $conn->prepare("UPDATE second_phonebook 
+                    SET firstname=?, lastname=?
+                    WHERE id =?");
+    $names->bind_param("ssi", $firstname, $lastname, $id);
+    
+
+    $numbers = $conn->prepare("UPDATE phone_numbers
+                                SET number=?
+                                WHERE id=?");
+    $numbers->bind_param("si", $phonenumber[$y], $numid[$x]);
+
+    $emails = $conn->prepare("UPDATE emails 
+                            SET email=?
+                            WHERE id=?");
+    $emails->bind_param("si", $email, $emailid);
+
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST["editid"];
         $firstname = $_POST["editfname"];
@@ -22,43 +41,24 @@
         $email = $_POST["editemail"];
         $emaillength = count($email);
 
-        /*$sql = "UPDATE second_phonebook 
-                    SET firstname='$firstname', lastname='$lastname'
-                    WHERE id = '$id'";*/
-
-        $names = $conn->prepare("UPDATE second_phonebook 
-                        SET firstname=?, lastname=?
-                        WHERE id =?");
-        $names->bind_param("ssi", $firstname, $lastname, $id);
         $names->execute();
 
-        $numbers = $conn->prepare("INSERT INTO phone_numbers (userid, number)
-                                VALUES (?, ?)");
-        $numbers->bind_param("is", $last_id, $numvalue);
-
-        $emails = $conn->prepare("INSERT INTO emails (userid, email)
-                                VALUES (?, ?)");
-        $emails->bind_param("is", $last_id, $emailvalue);
-
-
-     
-        $y=0;
-        $z=0;
             for($x = 0; $x < $numidlength; $x++) {
-                $phonenumbersql = "UPDATE phone_numbers
+                /*$phonenumbersql = "UPDATE phone_numbers
                                     SET number = '$phonenumber[$y]'
                                     WHERE id = '$numid[$x]'";
-                $conn->query($phonenumbersql);
+                $conn->query($phonenumbersql);*/
+                $numbers->execute();
                 $y++;
                 
             }
             if(isset($_POST["neweditphonenumber"]) === TRUE) {
             $newphonenumber = $_POST["neweditphonenumber"];
-            foreach($newphonenumber as $newnumvalue) {
-                $phonenumbersql = "INSERT INTO phone_numbers (userid, number)
-                            VALUES ('$id', '$newnumvalue')";
-                $conn->query($phonenumbersql);
-                }
+                foreach($newphonenumber as $newnumvalue) {
+                    $phonenumbersql = "INSERT INTO phone_numbers (userid, number)
+                                VALUES ('$id', '$newnumvalue')";
+                    $conn->query($phonenumbersql);
+                    }
             }
             
  
@@ -78,6 +78,7 @@
                 }
             }
     echo "Update Successful";
+    var_dump($numid);
     } else {
         echo "Error: " . $sql . "<br/>" . $phonenumbersql . "<br/>" . $emailsql . "<br/>" . $conn->error; 
     }
