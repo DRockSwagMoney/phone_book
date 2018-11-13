@@ -27,14 +27,10 @@
         $names->execute();        
             $last_id = $conn->insert_id;
             foreach($phonenumber as $numvalue) {
-                $phonenumbersql = "INSERT INTO phone_numbers (userid, number)
-                            VALUES ('$last_id', '$numvalue')";
                 $numbers->execute();
             }
 
             foreach($email as $emailvalue) {
-                $emailsql = "INSERT INTO emails (userid, email)
-                            VALUES ('$last_id', '$emailvalue')";
                 $emails->execute();
             }
         echo "Insert Successful";

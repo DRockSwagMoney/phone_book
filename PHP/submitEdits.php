@@ -22,10 +22,26 @@
         $email = $_POST["editemail"];
         $emaillength = count($email);
 
-        $sql = "UPDATE second_phonebook 
+        /*$sql = "UPDATE second_phonebook 
                     SET firstname='$firstname', lastname='$lastname'
-                    WHERE id = '$id'";
-        if($conn->query($sql) === TRUE){
+                    WHERE id = '$id'";*/
+
+        $names = $conn->prepare("UPDATE second_phonebook 
+                        SET firstname=?, lastname=?
+                        WHERE id =?");
+        $names->bind_param("ssi", $firstname, $lastname, $id);
+        $names->execute();
+
+        $numbers = $conn->prepare("INSERT INTO phone_numbers (userid, number)
+                                VALUES (?, ?)");
+        $numbers->bind_param("is", $last_id, $numvalue);
+
+        $emails = $conn->prepare("INSERT INTO emails (userid, email)
+                                VALUES (?, ?)");
+        $emails->bind_param("is", $last_id, $emailvalue);
+
+
+     
         $y=0;
         $z=0;
             for($x = 0; $x < $numidlength; $x++) {
@@ -42,8 +58,8 @@
                 $phonenumbersql = "INSERT INTO phone_numbers (userid, number)
                             VALUES ('$id', '$newnumvalue')";
                 $conn->query($phonenumbersql);
+                }
             }
-}
             
  
             foreach($emailid as $emailidvalue) {
@@ -61,11 +77,9 @@
                     $conn->query($emailsql);
                 }
             }
-            echo "Update Successful";
-        } else {
-            echo "Error: " . $sql . "<br/>" . $phonenumbersql . "<br/>" . $emailsql . "<br/>" . $conn->error; 
-        }
-    
+    echo "Update Successful";
+    } else {
+        echo "Error: " . $sql . "<br/>" . $phonenumbersql . "<br/>" . $emailsql . "<br/>" . $conn->error; 
     }
 
 ?>
