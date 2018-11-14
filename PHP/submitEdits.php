@@ -6,6 +6,8 @@
     $dbname = "phone_book";
     $conn = new mysqli($servername, $username, $password, $dbname);
 
+    include 'editNumDelete.php';
+
     $x=0;
     $y=0;
     $z=0;
@@ -76,6 +78,8 @@
                 $conn->query($emailsql);
             }
         }
+        //$phonenumbersql->execute();
+        echo $deleteid;
     echo "Update Successful";
     } else {
         echo "Error: " . $sql . $phonenumbersql . $emailsql . $conn->error; 

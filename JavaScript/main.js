@@ -26,7 +26,7 @@ $(document).on('click', '#deleteEditEmail', function () {
     $('#' + id).remove();
     $.ajax({
         url: "PHP/editEmailDelete.php",
-        method: "post",
+        method: "get",
         data: { id: id },
         success: function (data) {
             alert(data);
@@ -43,10 +43,11 @@ $(document).on('click', '#deleteEditNumber', function () {
     $('#' + id).remove();
     $.ajax({
         url: "PHP/editNumDelete.php",
-        method: "post",
+        method: "get",
         data: { id: id },
         success: function (data) {
             alert(data);
+            console.log(data);
         }
     });
 });
