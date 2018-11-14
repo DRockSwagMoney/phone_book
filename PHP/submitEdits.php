@@ -15,16 +15,21 @@
                     WHERE id =?");
     $names->bind_param("ssi", $firstname, $lastname, $id);
     
-
+    //Phone number preparation
     $numbers = $conn->prepare("UPDATE phone_numbers
                                 SET number=?
                                 WHERE id=?");
-    $numbers->bind_param("si", $phonenumber[], $numid[]);
+    $numbers->bind_param("si", $phonenumbervalue, $numidvalue);
 
+    $newnumbers = $conn->prepare("INSERT INTO phone_numbers (userid, number)
+                            VALUES (?, ?)");
+    $newnumbers->bind_param("is", $id, $newnumbervalue);
+
+    //Email preparation
     $emails = $conn->prepare("UPDATE emails 
                             SET email=?
                             WHERE id=?");
-    $emails->bind_param("si", $email, $emailid);
+    $emails->bind_param("si", $emailvalue, $emailidvalue);
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST["editid"];
@@ -41,59 +46,39 @@
         $email = $_POST["editemail"];
         $emaillength = count($email);
 
+        //Updates the names
         $names->execute();
-        $param=[];
-            /*for($x = 0; $x < $numidlength; $x++) {
-                $phonenumbersql = "UPDATE phone_numbers
-                                    SET number = '$phonenumber[$y]'
-                                    WHERE id = '$numid[$x]'";
-                $conn->query($phonenumbersql);
-                $numbers->execute();
-                $y++;
-                
-            }*/
-            foreach($phonenumber as $num) {
-                $param[$x] = $num;
-                $x++;
-            }
-            foreach($numid as $id) {
-                $idparam[$y] = $id;
-                $y++;
-            }
+
+        //Each PHONE NUMBER will be updated accordingly
+        foreach($numid as $numidvalue) {
+            $phonenumbervalue = $phonenumber[$y];
             $numbers->execute();
+            $y++;
+        }
+        if(isset($_POST["neweditphonenumber"]) === TRUE) {
+        $newphonenumber = $_POST["neweditphonenumber"];
+            foreach($newphonenumber as $newnumbervalue) {
+                $newnumbers->execute();
+            }
+        }
 
-
-            if(isset($_POST["neweditphonenumber"]) === TRUE) {
-            $newphonenumber = $_POST["neweditphonenumber"];
-                foreach($newphonenumber as $newnumvalue) {
-                    $phonenumbersql = "INSERT INTO phone_numbers (userid, number)
-                                VALUES ('$id', '$newnumvalue')";
-                    $conn->query($phonenumbersql);
-                    }
+        //Each EMAIL will be updated accordingly
+        foreach($emailid as $emailidvalue) {
+            $emailvalue = $email[$z];
+            $emails->execute();
+            $z++;
+        }
+        if(isset($_POST["neweditemail"]) === TRUE) {
+        $newemail = $_POST["neweditemail"];
+            foreach($newemail as $newemailvalue) {
+                $emailsql = "INSERT INTO emails (userid, email)
+                            VALUES ('$id', '$newemailvalue')";
+                $conn->query($emailsql);
             }
-            
- 
-            foreach($emailid as $emailidvalue) {
-                    $emailsql = "UPDATE emails 
-                                SET email = '$email[$z]'
-                                WHERE id = '$emailidvalue'";
-                    $conn->query($emailsql);
-                    $z++;
-            }
-            if(isset($_POST["neweditemail"]) === TRUE) {
-            $newemail = $_POST["neweditemail"];
-                foreach($newemail as $newemailvalue) {
-                    $emailsql = "INSERT INTO emails (userid, email)
-                                VALUES ('$id', '$newemailvalue')";
-                    $conn->query($emailsql);
-                }
-            }
+        }
     echo "Update Successful";
-    var_dump($numid);
-    var_dump($phonenumber);
-    var_dump($param);
     } else {
-        echo "Error: " . $sql . "<br/>" . $phonenumbersql . "<br/>" . $emailsql . "<br/>" . $conn->error; 
+        echo "Error: " . $sql . $phonenumbersql . $emailsql . $conn->error; 
     }
 
 ?>
