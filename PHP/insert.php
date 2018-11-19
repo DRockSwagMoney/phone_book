@@ -17,12 +17,15 @@
     $emails = $conn->prepare("INSERT INTO emails (userid, email)
                             VALUES (?, ?)");
     $emails->bind_param("is", $last_id, $emailvalue);
+    
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $firstname = $_POST["fname"];
         $lastname = $_POST["lname"];
         $phonenumber =  $_POST["phonenumber"];
         $email = $_POST["email"];
+
+        
 
         $names->execute();        
             $last_id = $conn->insert_id;
@@ -33,9 +36,9 @@
             foreach($email as $emailvalue) {
                 $emails->execute();
             }
-        echo "Insert Successful";
-        } else {
-            echo "Error: " . $sql . $conn->error; 
-        }
+    echo "Insert Successful";
+    } else {
+        echo "Error: " . $sql . $conn->error; 
+    }
 
 ?>

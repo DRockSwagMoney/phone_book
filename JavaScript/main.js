@@ -42,7 +42,7 @@ $(document).on('click', '#deleteEditNumber', function () {
     var id = $(this).data("id6");
     $('#' + id).remove();
     $.ajax({
-        url: "PHP/editNumDelete.php",
+        url: "PHP/getNumDelete.php",
         method: "get",
         data: { id: id },
         success: function (data) {

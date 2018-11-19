@@ -32,6 +32,9 @@
                             SET email=?
                             WHERE id=?");
     $emails->bind_param("si", $emailvalue, $emailidvalue);
+    $newemails = $conn->prepare("INSERT INTO emails (userid, email)
+                                VALUES (?, ?)");
+    $newemails->bind_param("is", $id, $newemailvalue);
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST["editid"];
@@ -73,13 +76,12 @@
         if(isset($_POST["neweditemail"]) === TRUE) {
         $newemail = $_POST["neweditemail"];
             foreach($newemail as $newemailvalue) {
-                $emailsql = "INSERT INTO emails (userid, email)
-                            VALUES ('$id', '$newemailvalue')";
-                $conn->query($emailsql);
+                $newemails->execute();
             }
         }
-        //$phonenumbersql->execute();
-        echo $deleteid;
+
+    $phonenumbersql->execute();
+    echo $deleteid;
     echo "Update Successful";
     } else {
         echo "Error: " . $sql . $phonenumbersql . $emailsql . $conn->error; 
