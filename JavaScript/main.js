@@ -16,7 +16,7 @@ $(document).ready(function () {
 $(document).on('click', '#closenum', function () {
     $('#removenum').remove();
 });
-//Removes the row for the new email
+//Removes the row for the new email (blank field)
 $(document).on('click', '#closeeditemail', function () {
     $('#removeemail').remove();
 });
@@ -33,30 +33,47 @@ $(document).on('click', '#deleteEditEmail', function () {
         }
     });
 });
-//Removes the row for the edit new number
+//Removes the row for the edit new number after clicking add
 $(document).on('click', '#closeeditnum', function () {
     $('#removeeditnum').remove();
 });
-//Removes the row for the edit new number
-var deleteThisID = [];
+//Removes the row for the edit new number after a submit has been completed
+var deleteNumberId = [];
+var numcounter = 0;
 $(document).on('click', '#deleteEditNumber', function () {
     var id = $(this).data("id6");
     $('#' + id).remove();
+    counter++;
     $.ajax({
-        url: "PHP/getNumDelete.php",
+        url: "PHP/getNumId.php",
         method: "get",
         data: { id: id },
         success: function (data) {
-            console.log(data);
-            deleteThisID = data;
-            console.log(deleteThisID);
+            deleteNumberId.push(data);
         }
     });
 });
-//Removes the row for the edit new email
+//Removes the row for the edit new email after add button has been clicked
+var deleteEmailId = [];
+var emailcounter = 0;
 $(document).on('click', '#closeeditemail', function () {
     $('#removeeditemail').remove();
 });
+$(document).on('click', '#deleteEditEmail', function () {
+    var id = $(this).data("id7");
+    $('#' + id).remove();
+    emailcounter++;
+    $.ajax({
+        url: "PHP/getEmailId.php",
+        method: "get",
+        data: { id: id },
+        success: function (data) {
+            deleteEmailId.push(data);
+        }
+    });
+});
+
+
 function fetch_data() {
     $.ajax({
         url: "PHP/select.php",
@@ -155,7 +172,6 @@ $(document).on('click', '#btn_edit', function () {
 //Submit button for the edit feature
 $(document).on('click', '#saveChanges', function () {
     event.preventDefault();
-    deleteThisID
     if ($('#editfname').val() == '') {
         alert("Enter First Name");
         return false;
@@ -176,17 +192,40 @@ $(document).on('click', '#saveChanges', function () {
         $.ajax({
             url: "PHP/submitEdits.php",
             type: "POST",
-            data: $('#makeEdits').serialize(), deleteThisID,
+            data: $('#makeEdits').serialize(),
             success: function (data) {
                 console.log($('#makeEdits').serialize());
                 $('#makeEdits')[0].reset();
                 $('#editContact').modal('toggle');
                 alert(data);
                 fetch_data();
-                return true;
+                resetEditCounters();
             }
         });
     }
+    if (numcounter > 0) {
+        numcounter = 0;
+        $.ajax({
+            url: "PHP/editNumDelete.php",
+            type: "POST",
+            data: { deletenumberId: deleteNumberId },
+            success: function (data) {
+                alert(data);
+            }
+        });
+    }
+    if (emailcounter > 0) {
+        emailcounter = 0;
+        $.ajax({
+            url: "PHP/editEmailDelete.php",
+            type: "POST",
+            data: { deleteEmailId: deleteEmailID },
+            success: function (data) {
+                alert(data);
+            }
+        });
+    }
+
 });
 
 //Actual test for edit email button
@@ -212,3 +251,12 @@ $(document).on('hidden.bs.modal', '#addContact', function() {
     $('#removenum').remove();
     $('#removeemail').remove();
 });
+
+$(document).on('click', '#Cancel', function () {
+    resetEditCounters();
+});
+
+function resetEditCounters() {
+    numcounter = 0;
+    emailcounter = 0;
+}

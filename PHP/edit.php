@@ -83,7 +83,8 @@
                             <br/>
                             <div id="newEditEmailField">';
         while($row = $resultemail->fetch_assoc()) {
-                $output .= '    <div class="row">
+                $output .= '<div id="'.$row["id"].'"
+                                <div class="row">
                                     <div class="col-sm-10">
                                         <input type="hidden" style="display:none" class="form-control" name="editemailid[]" value="'.$row["id"].'"/>
                                         <input class="form-control" type="text" name="editemail[]" id="editemail" value="'.$row["email"].'"/>
@@ -92,11 +93,12 @@
                                         <button type="button" id="deleteEditEmail" data-id7="'.$row["id"].'" name="deleteEditEmail" class="btn btn-danger">&times;</button>
                                     </div> 
                                 </div>
-                            <br/>';                            
+                            <br/>
+                            </div>';                            
         }
         $output .=          '</div>
                             <div class="modal-footer">
-                            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                            <button type="button" data-dismiss="modal" id="Cancel" class="btn btn-default">Cancel</button>
                             
                             <input type="submit" name="saveChanges" id="saveChanges" value="Save Changes" class="btn btn-success"/>
                         </form>
