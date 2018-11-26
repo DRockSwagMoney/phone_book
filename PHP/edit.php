@@ -65,8 +65,9 @@
                                         <button type="button" id="deleteEditNumber" data-id6="'.$row["id"].'" name="deleteEditNumber" class="btn btn-danger">&times;</button>
                                     </div>
                                 </div>
-                            </div>
-                                <br/>';
+                                <br/>
+                            </div>';
+                                
         }
                 $output .= '</div>
                             <div class="container">

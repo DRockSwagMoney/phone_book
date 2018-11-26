@@ -4,5 +4,4 @@
 
     $deleteid = $_GET["id"];
     echo $deleteid;
-    return $deleteid;
 ?>

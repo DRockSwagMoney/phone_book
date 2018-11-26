@@ -38,6 +38,7 @@ $(document).on('click', '#closeeditnum', function () {
     $('#removeeditnum').remove();
 });
 //Removes the row for the edit new number
+var deleteThisID = [];
 $(document).on('click', '#deleteEditNumber', function () {
     var id = $(this).data("id6");
     $('#' + id).remove();
@@ -46,8 +47,9 @@ $(document).on('click', '#deleteEditNumber', function () {
         method: "get",
         data: { id: id },
         success: function (data) {
-            alert(data);
             console.log(data);
+            deleteThisID = data;
+            console.log(deleteThisID);
         }
     });
 });
@@ -153,6 +155,7 @@ $(document).on('click', '#btn_edit', function () {
 //Submit button for the edit feature
 $(document).on('click', '#saveChanges', function () {
     event.preventDefault();
+    deleteThisID
     if ($('#editfname').val() == '') {
         alert("Enter First Name");
         return false;
@@ -173,7 +176,7 @@ $(document).on('click', '#saveChanges', function () {
         $.ajax({
             url: "PHP/submitEdits.php",
             type: "POST",
-            data: $('#makeEdits').serialize(),
+            data: $('#makeEdits').serialize(), deleteThisID,
             success: function (data) {
                 console.log($('#makeEdits').serialize());
                 $('#makeEdits')[0].reset();
