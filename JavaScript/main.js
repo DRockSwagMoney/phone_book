@@ -181,6 +181,7 @@ $(document).on('click', '#saveChanges', function () {
     else {
         if (numcounter > 0) {
             numcounter = 0;
+            console.log(deleteNumberId);
             $.ajax({
                 url: "PHP/editNumDelete.php",
                 type: "POST",
@@ -192,6 +193,7 @@ $(document).on('click', '#saveChanges', function () {
         }
         if (emailcounter > 0) {
             emailcounter = 0;
+            console.log(deleteEmailId);
             $.ajax({
                 url: "PHP/editEmailDelete.php",
                 type: "POST",
@@ -244,9 +246,21 @@ $(document).on('hidden.bs.modal', '#addContact', function() {
 
 $(document).on('click', '#Cancel', function () {
     resetEditCounters();
+    console.log(numcounter);
+    console.log(emailcounter);
+    deleteNumberId = [];
+    deleteEmailId = [];
+});
+
+//Clears queue when modal disappears in the Edit Contact modal
+$(document).on('hidden.bs.modal', '#editContact', function () {
+    deleteNumberId = [];
+    deleteEmailId = [];
 });
 
 function resetEditCounters() {
     numcounter = 0;
     emailcounter = 0;
+    deleteNumberId = [];
+    deleteEmailId = [];
 }
