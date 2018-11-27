@@ -21,7 +21,7 @@ $(document).on('click', '#closeeditemail', function () {
     $('#removeemail').remove();
 });
 
-$(document).on('click', '#deleteEditEmail', function () {
+/*$(document).on('click', '#deleteEditEmail', function () {
     var id = $(this).data("id7");
     $('#' + id).remove();
     $.ajax({
@@ -32,7 +32,7 @@ $(document).on('click', '#deleteEditEmail', function () {
             alert(data);
         }
     });
-});
+});*/
 //Removes the row for the edit new number after clicking add
 $(document).on('click', '#closeeditnum', function () {
     $('#removeeditnum').remove();
@@ -43,7 +43,7 @@ var numcounter = 0;
 $(document).on('click', '#deleteEditNumber', function () {
     var id = $(this).data("id6");
     $('#' + id).remove();
-    counter++;
+    numcounter++;
     $.ajax({
         url: "PHP/getNumId.php",
         method: "get",
@@ -59,6 +59,7 @@ var emailcounter = 0;
 $(document).on('click', '#closeeditemail', function () {
     $('#removeeditemail').remove();
 });
+
 $(document).on('click', '#deleteEditEmail', function () {
     var id = $(this).data("id7");
     $('#' + id).remove();
@@ -189,6 +190,28 @@ $(document).on('click', '#saveChanges', function () {
         return false;
     }
     else {
+        if (numcounter > 0) {
+            numcounter = 0;
+            $.ajax({
+                url: "PHP/editNumDelete.php",
+                type: "POST",
+                data: { deleteNumberId: deleteNumberId },
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        }
+        if (emailcounter > 0) {
+            emailcounter = 0;
+            $.ajax({
+                url: "PHP/editEmailDelete.php",
+                type: "POST",
+                data: { deleteEmailId: deleteEmailId },
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        }
         $.ajax({
             url: "PHP/submitEdits.php",
             type: "POST",
@@ -199,33 +222,11 @@ $(document).on('click', '#saveChanges', function () {
                 $('#editContact').modal('toggle');
                 alert(data);
                 fetch_data();
+                console.log(emailcounter);
                 resetEditCounters();
             }
         });
     }
-    if (numcounter > 0) {
-        numcounter = 0;
-        $.ajax({
-            url: "PHP/editNumDelete.php",
-            type: "POST",
-            data: { deletenumberId: deleteNumberId },
-            success: function (data) {
-                alert(data);
-            }
-        });
-    }
-    if (emailcounter > 0) {
-        emailcounter = 0;
-        $.ajax({
-            url: "PHP/editEmailDelete.php",
-            type: "POST",
-            data: { deleteEmailId: deleteEmailID },
-            success: function (data) {
-                alert(data);
-            }
-        });
-    }
-
 });
 
 //Actual test for edit email button
