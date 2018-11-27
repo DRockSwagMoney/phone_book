@@ -1,6 +1,6 @@
 <?php
     //Create Connection
-    include 'connect.php';
+    include '../PHP/connect.php';
     
     $deleteid = $_POST["deleteNumberId"];
     $phonenumbersql = $conn->prepare("DELETE FROM phone_numbers WHERE id = ? ");
