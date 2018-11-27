@@ -1,13 +1,17 @@
 <?php
     //Create Connection
     include 'connect.php';
-
+    
+    $deleteid = $_POST["deleteNumberId"];
     $phonenumbersql = $conn->prepare("DELETE FROM phone_numbers WHERE id = ? ");
-    $phonenumbersql->bind_param("i", $deleteid);
+    $phonenumbersql->bind_param("i", $deleteidvalue);
 
-    /*$phonenumbersql = "DELETE FROM phone_numbers WHERE id ='".$_POST["id"]."'";
-    if($conn->query($phonenumbersql) === TRUE){
-      echo 'Data Deleted'; 
-    }*/
-    //var_dump($deleteid);
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        foreach($deleteid as $deleteidvalue) {
+            $phonenumbersql->execute();
+        }
+    }
+
+    echo "These number ids were deleted: ";
+    var_dump($deleteid);
 ?>

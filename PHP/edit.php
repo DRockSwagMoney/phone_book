@@ -42,16 +42,16 @@
                             </div>';
         }
         $output .=          '<div class="modal-body">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h5><label>Phone Number:</label></h5>
-                                    </div>
-                                    <div class="col">
-                                        <div style="text-align:right"><button type="button" id="addEditNumber" name="addEditNumber" class="btn btn-primary">Add</button></div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <h5><label>Phone Number:</label></h5>
+                                        </div>
+                                        <div class="col">
+                                            <div style="text-align:right"><button type="button" id="addEditNumber" name="addEditNumber" class="btn btn-primary">Add</button></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             <br/>
                             <div id="newEditPhoneNumberField">';
         while($row = $resultnum->fetch_assoc()) {
@@ -65,8 +65,9 @@
                                         <button type="button" id="deleteEditNumber" data-id6="'.$row["id"].'" name="deleteEditNumber" class="btn btn-danger">&times;</button>
                                     </div>
                                 </div>
-                            </div>
-                                <br/>';
+                                <br/>
+                            </div>';
+                                
         }
                 $output .= '</div>
                             <div class="container">
@@ -82,21 +83,22 @@
                             <br/>
                             <div id="newEditEmailField">';
         while($row = $resultemail->fetch_assoc()) {
-                $output .= '    <div class="row">
-                                    <div class="col-sm-10">
-                                        <input type="hidden" style="display:none" class="form-control" name="editemailid[]" value="'.$row["id"].'"/>
-                                        <input class="form-control" type="text" name="editemail[]" id="editemail" value="'.$row["email"].'"/>
+        $output .=              '<div id="'.$row["id"].'">
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <input type="hidden" style="display:none" class="form-control" name="editemailid[]" value="'.$row["id"].'"/>
+                                            <input class="form-control" type="text" name="editemail[]" id="editemail" value="'.$row["email"].'"/>
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" id="deleteEditEmail" data-id7="'.$row["id"].'" name="deleteEditEmail" class="btn btn-danger">&times;</button>
+                                        </div> 
                                     </div>
-                                    <div class="col">
-                                        <button type="button" id="deleteEditEmail" data-id7="'.$row["id"].'" name="deleteEditEmail" class="btn btn-danger">&times;</button>
-                                    </div> 
-                                </div>
-                            <br/>';                            
+                                <br/>
+                                </div>';                            
         }
         $output .=          '</div>
-                            <div class="modal-footer">
-                            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-                            
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" id="Cancel" class="btn btn-default">Cancel</button>                            
                             <input type="submit" name="saveChanges" id="saveChanges" value="Save Changes" class="btn btn-success"/>
                         </form>
                         </div>';

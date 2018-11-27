@@ -16,45 +16,54 @@ $(document).ready(function () {
 $(document).on('click', '#closenum', function () {
     $('#removenum').remove();
 });
-//Removes the row for the new email
+//Removes the row for the new email (blank field)
 $(document).on('click', '#closeeditemail', function () {
     $('#removeemail').remove();
+});
+
+//Removes the row for the edit new number after clicking add
+$(document).on('click', '#closeeditnum', function () {
+    $('#removeeditnum').remove();
+});
+//Removes the row for the edit new number after a submit has been completed
+var deleteNumberId = [];
+var numcounter = 0;
+$(document).on('click', '#deleteEditNumber', function () {
+    var id = $(this).data("id6");
+    $('#' + id).remove();
+    numcounter++;
+    $.ajax({
+        url: "PHP/getNumId.php",
+        method: "get",
+        data: { id: id },
+        success: function (data) {
+            deleteNumberId.push(data);
+        }
+    });
+});
+//Removes the row for the edit new email after add button has been clicked
+var deleteEmailId = [];
+var emailcounter = 0;
+$(document).on('click', '#closeeditemail', function () {
+    $('#removeeditemail').remove();
 });
 
 $(document).on('click', '#deleteEditEmail', function () {
     var id = $(this).data("id7");
     $('#' + id).remove();
+    emailcounter++;
     $.ajax({
-        url: "PHP/editEmailDelete.php",
+        url: "PHP/getEmailId.php",
         method: "get",
         data: { id: id },
         success: function (data) {
-            alert(data);
+            deleteEmailId.push(data);
+            console.log(emailcounter);
         }
     });
 });
-//Removes the row for the edit new number
-$(document).on('click', '#closeeditnum', function () {
-    $('#removeeditnum').remove();
-});
-//Removes the row for the edit new number
-$(document).on('click', '#deleteEditNumber', function () {
-    var id = $(this).data("id6");
-    $('#' + id).remove();
-    $.ajax({
-        url: "PHP/getNumDelete.php",
-        method: "get",
-        data: { id: id },
-        success: function (data) {
-            alert(data);
-            console.log(data);
-        }
-    });
-});
-//Removes the row for the edit new email
-$(document).on('click', '#closeeditemail', function () {
-    $('#removeeditemail').remove();
-});
+
+
 function fetch_data() {
     $.ajax({
         url: "PHP/select.php",
@@ -170,6 +179,30 @@ $(document).on('click', '#saveChanges', function () {
         return false;
     }
     else {
+        if (numcounter > 0) {
+            numcounter = 0;
+            console.log(deleteNumberId);
+            $.ajax({
+                url: "PHP/editNumDelete.php",
+                type: "POST",
+                data: { deleteNumberId: deleteNumberId },
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        }
+        if (emailcounter > 0) {
+            emailcounter = 0;
+            console.log(deleteEmailId);
+            $.ajax({
+                url: "PHP/editEmailDelete.php",
+                type: "POST",
+                data: { deleteEmailId: deleteEmailId },
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        }
         $.ajax({
             url: "PHP/submitEdits.php",
             type: "POST",
@@ -180,7 +213,8 @@ $(document).on('click', '#saveChanges', function () {
                 $('#editContact').modal('toggle');
                 alert(data);
                 fetch_data();
-                return true;
+                console.log(emailcounter);
+                resetEditCounters();
             }
         });
     }
@@ -209,3 +243,24 @@ $(document).on('hidden.bs.modal', '#addContact', function() {
     $('#removenum').remove();
     $('#removeemail').remove();
 });
+
+$(document).on('click', '#Cancel', function () {
+    resetEditCounters();
+    console.log(numcounter);
+    console.log(emailcounter);
+    deleteNumberId = [];
+    deleteEmailId = [];
+});
+
+//Clears queue when modal disappears in the Edit Contact modal
+$(document).on('hidden.bs.modal', '#editContact', function () {
+    deleteNumberId = [];
+    deleteEmailId = [];
+});
+
+function resetEditCounters() {
+    numcounter = 0;
+    emailcounter = 0;
+    deleteNumberId = [];
+    deleteEmailId = [];
+}

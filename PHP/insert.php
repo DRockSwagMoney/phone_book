@@ -25,17 +25,16 @@
         $phonenumber =  $_POST["phonenumber"];
         $email = $_POST["email"];
 
-        
+        $names->execute();  
+      
+        $last_id = $conn->insert_id;
+        foreach($phonenumber as $numvalue) {
+            $numbers->execute();
+        }
 
-        $names->execute();        
-            $last_id = $conn->insert_id;
-            foreach($phonenumber as $numvalue) {
-                $numbers->execute();
-            }
-
-            foreach($email as $emailvalue) {
-                $emails->execute();
-            }
+        foreach($email as $emailvalue) {
+            $emails->execute();
+        }
     echo "Insert Successful";
     } else {
         echo "Error: " . $sql . $conn->error; 

@@ -15,13 +15,13 @@
 <body>
     <div class="container">
         <h3 align="center">Phone Book</h3>
-        <div id="live_data"></div><!--Select.php that forms the table here-->
-        <div id="view_data"></div><!--This is where the view modal will pop up-->
-        <div id="edit_data"></div><!--This is where the edit modal will pop up-->
-
         <div class="text-center">
             <button class="btn btn-success" data-target="#addContact" data-toggle="modal" type="button">Add Contact</button>
         </div>
+        <br/>
+        <div id="live_data"></div><!--Select.php that forms the table here-->
+        <div id="view_data"></div><!--This is where the view modal will pop up-->
+        <div id="edit_data"></div><!--This is where the edit modal will pop up-->
 
 
 

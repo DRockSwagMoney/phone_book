@@ -1,14 +1,17 @@
 <?php
     //Create Connection
-    $servername = "127.0.0.1";
-    $username = "root";
-    $password = "";
-    $dbname = "phone_book";
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    include 'connect.php';
 
+    $deleteid = $_POST["deleteEmailId"];
+    $emailsql = $conn->prepare("DELETE FROM emails WHERE id = ? ");
+    $emailsql->bind_param("i", $deleteidvalue);
 
-    $emailsql = "DELETE FROM emails WHERE id ='".$_POST["id"]."'";
-    if($conn->query($emailsql) === TRUE){
-      echo 'Data Deleted'; 
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        foreach($deleteid as $deleteidvalue) {
+            $emailsql->execute();
+        }
     }
+
+    echo "These email ids were deleted: ";
+    var_dump($deleteid);
 ?>
