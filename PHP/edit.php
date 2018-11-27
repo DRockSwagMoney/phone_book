@@ -83,7 +83,7 @@
                             <br/>
                             <div id="newEditEmailField">';
         while($row = $resultemail->fetch_assoc()) {
-        $output .=              '<div id="'.$row["id"].'"
+        $output .=              '<div id="'.$row["id"].'">
                                     <div class="row">
                                         <div class="col-sm-10">
                                             <input type="hidden" style="display:none" class="form-control" name="editemailid[]" value="'.$row["id"].'"/>

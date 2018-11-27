@@ -21,18 +21,6 @@ $(document).on('click', '#closeeditemail', function () {
     $('#removeemail').remove();
 });
 
-/*$(document).on('click', '#deleteEditEmail', function () {
-    var id = $(this).data("id7");
-    $('#' + id).remove();
-    $.ajax({
-        url: "PHP/editEmailDelete.php",
-        method: "get",
-        data: { id: id },
-        success: function (data) {
-            alert(data);
-        }
-    });
-});*/
 //Removes the row for the edit new number after clicking add
 $(document).on('click', '#closeeditnum', function () {
     $('#removeeditnum').remove();
@@ -70,6 +58,7 @@ $(document).on('click', '#deleteEditEmail', function () {
         data: { id: id },
         success: function (data) {
             deleteEmailId.push(data);
+            console.log(emailcounter);
         }
     });
 });
