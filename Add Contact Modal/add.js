@@ -22,6 +22,7 @@ $(document).on('click', '#closeemail', function () {
 //Add contact modal
 $(document).on('click', '#insert', function () {
     event.preventDefault();
+    phoneValidate($('#phonenumber'));
     if ($('#fname').val() == '') {
         alert("Enter First Name");
         return false;
@@ -32,6 +33,10 @@ $(document).on('click', '#insert', function () {
     }
     else if ($('#phonenumber').val() == '') {
         alert("Enter Phone Number");
+        return false;
+    }
+    else if (phoneValidate($('#phonenumber')) == false) {
+        alert("Enter Valid Phone Number");
         return false;
     }
     else if ($('#email').val() == '') {
@@ -66,4 +71,16 @@ $(document).on('hidden.bs.modal', '#addContact', function () {
 function removeInputs() {
     $('#removenum').remove();
     $('#removeemail').remove();
+}
+
+function phoneValidate(inputtxt) {
+    var phone = new RegExp(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
+    return phone.test(inputtxt);
+    console.log(phone);
+    /*if (inputtxt.value.match(phone)) {
+        return true;
+    } else {
+        alert("message");
+        return false;
+    }*/
 }
