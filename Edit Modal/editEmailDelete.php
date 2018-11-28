@@ -1,6 +1,6 @@
 <?php
     //Create Connection
-    include 'connect.php';
+    include '../PHP/connect.php';
 
     $deleteid = $_POST["deleteEmailId"];
     $emailsql = $conn->prepare("DELETE FROM emails WHERE id = ? ");
