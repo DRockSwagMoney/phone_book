@@ -60,7 +60,7 @@
                                 <div id="addNewEmailField">
                                     <div class="row">
                                         <div class="col-sm-10">
-                                            <input type="text" name="email[]" id="email" class="form-control" />
+                                            <input type="email" name="email[]" id="email" class="form-control" />
                                         </div>
                                         <div class="col">
                                             <button type="button" class="btn btn-primary" name="addEmailBtn" id="addEmailBtn">+</button>
