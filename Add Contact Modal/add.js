@@ -21,6 +21,7 @@ $(document).on('click', '#closeemail', function () {
 
 //Add contact modal
 $(document).on('click', '#insert', function () {
+    numValidate = [];
     event.preventDefault();
     fnameValidation($('#fname').val());
     lnameValidation($('#lname').val());
@@ -30,7 +31,7 @@ $(document).on('click', '#insert', function () {
         
     emailValidation($('#email').val());
 
-    if (fnameValidate === true && lnameValidate === true && numValidate === true && emailValidate === true) {
+    if (fnameValidate === true && lnameValidate === true && numValidate[0] === true && numValidate[1] === true && emailValidate === true) {
         $.ajax({
             url: "Add Contact Modal/insert.php",
             type: "POST",
@@ -53,6 +54,7 @@ $(document).on('hidden.bs.modal', '#addContact', function () {
     $('#removenum').remove();
     $('#removeemail').remove();
     $('#insertForm')[0].reset();
+    numValidate = [];
 });
 
 //Hides extra fields in the Add Contact modal after submission
@@ -104,7 +106,6 @@ function lnameValidation(inputtxt) {
 
 var numValidate = [];
 function phoneValidation(inputtxt) {
-    numValidate.push(true);
     var phone = new RegExp(/^(?:\+?1\s*(?:[.-]\s*)?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})?[-. ]?([0-9]{4})$/);
     var result = phone.test(inputtxt); 
     console.log(inputtxt);
@@ -121,7 +122,9 @@ function phoneValidation(inputtxt) {
         event.preventDefault();
         numValidate.push(false);
         return numValidate;
-    } 
+    } else {
+        numValidate.push(true);
+        }
 }
 
 var emailValidate = false;
