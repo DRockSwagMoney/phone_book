@@ -22,16 +22,27 @@ $(document).on('click', '#closeemail', function () {
 //Add contact modal
 $(document).on('click', '#insert', function () {
     numValidate = [];
+    emailValidate = [];
     event.preventDefault();
     fnameValidation($('#fname').val());
     lnameValidation($('#lname').val());
     ($('[name^="phonenumber"]').each(function () {
         phoneValidation($(this).val());
     }));
-        
-    emailValidation($('#email').val());
+    ($('[name^="email"]').each(function () {
+        emailValidation($(this).val());
+    }));
 
-    if (fnameValidate === true && lnameValidate === true && numValidate[0] === true && numValidate[1] === true && emailValidate === true) {
+    if (fnameValidate === false) {
+        return false;
+    } else if (lnameValidate === false) {
+        return false;
+    } else if (numValidate.every(testTrue) === false) {
+        return false;
+    } else if (emailValidate.forEach === false) {
+        return false;
+    }
+    else /*(fnameValidate === true && lnameValidate === true && numValidate[0] === true && numValidate[1] === true && emailValidate === true)*/ {
         $.ajax({
             url: "Add Contact Modal/insert.php",
             type: "POST",
@@ -127,23 +138,31 @@ function phoneValidation(inputtxt) {
         }
 }
 
-var emailValidate = false;
+function testTrue(data) {
+    for (i = 0; i < data.length; i++) {
+        if (data[i] === false) {
+            return false;
+        } 
+     alert(data);
+    }
+}
+
+var emailValidate = [];
 function emailValidation(inputtxt) {
-    emailValidate = true;
     var email = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
     var result = email.test(inputtxt);
 
     if (inputtxt == "") {
         event.preventDefault();
         alert("Enter Email");
-        emailValidate = false;
+        emailValidate.push(false);
         return emailValidate;
     }
 
     else if (result === false) {
         alert("Enter Valid Email");
         event.preventDefault();
-        emailValidate = false;
+        emailValidate.push(false);
         return emailValidate;
     }
 }
