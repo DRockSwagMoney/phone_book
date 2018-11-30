@@ -65,20 +65,44 @@ $(document).on('click', '#deleteEditEmail', function () {
 //Submit button for the edit feature
 $(document).on('click', '#saveChanges', function () {
     event.preventDefault();
-    if ($('#editfname').val() == '') {
-        alert("Enter First Name");
+    resetEntries();
+
+    editFnameValidation($('#editfname').val());
+    editLnameValidation($('#editlname').val());
+    //Number validation
+    ($('[name^="editphonenumber"]').each(function () {
+        editPhoneValidation($(this).val());
+    }));
+    console.log(editNumValidate);
+    ($('[name^="neweditphonenumber"]').each(function () {
+        editPhoneValidation($(this).val());
+    }));
+    testNumForTrue = editNumValidate.every(testTrue);
+    testNewNumForTrue = editNewNumValidate.every(testTrue);
+    //Email Validation
+    ($('[name^="editemail"]').each(function () {
+        editEmailValidation($(this).val());
+    }));
+    ($('[name^="neweditemail"]').each(function () {
+        editEmailValidation($(this).val());
+    }));
+    console.log(editEmailValidate);
+    testEmailForTrue = editEmailValidate.every(testTrue);
+    testNewEmailForTrue = editNewEmailValidate.every(testTrue);
+    if (editFnameValidate === false) {
+        return false;
+    } else if (editLnameValidate === false) {
+        return false;
+    } else if (testNumForTrue === false) {
         return false;
     }
-    else if ($('#editlname').val() == '') {
-        alert("Enter Last Name");
+    else if (testEmailForTrue === false) {
         return false;
     }
-    else if ($('#editphonenumber').val() == '') {
-        alert("Enter Phone Number");
+    else if (testNewNumForTrue === false) {
         return false;
     }
-    else if ($('#editemail').val() == '') {
-        alert("Enter Email");
+    else if (testNewEmailForTrue === false) {
         return false;
     }
     else {
@@ -116,8 +140,8 @@ $(document).on('click', '#saveChanges', function () {
                 $('#editContact').modal('toggle');
                 alert(data);
                 fetch_data();
-                console.log(emailcounter);
                 resetEditCounters();
+                resetEntries();
             }
         });
     }
@@ -140,16 +164,18 @@ $(document).on('click', '#addEditNumber', function () {
 
 $(document).on('click', '#Cancel', function () {
     resetEditCounters();
-    console.log(numcounter);
-    console.log(emailcounter);
-    deleteNumberId = [];
-    deleteEmailId = [];
+    resetEntries();
 });
 
 //Clears queue when modal disappears in the Edit Contact modal
 $(document).on('hidden.bs.modal', '#editContact', function () {
     deleteNumberId = [];
     deleteEmailId = [];
+    editNumValidate = [];
+    editEmailValidate = [];
+    testNumForTrue = true;
+    testEmailForTrue = true;
+    $('#makeEdits')[0].reset();
 });
 
 function resetEditCounters() {
@@ -157,4 +183,105 @@ function resetEditCounters() {
     emailcounter = 0;
     deleteNumberId = [];
     deleteEmailId = [];
+    
+}
+
+//first name validation
+var editFnameValidate = false;
+function editFnameValidation(inputtxt) {
+    editFnameValidate = true;
+    var fname = new RegExp(/[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$/g);
+    var result = fname.test(inputtxt);
+
+    if (inputtxt == "") {
+        editFnameValidate = false;
+        alert("Enter First Name");
+        return editFnameValidate;
+    }
+
+    else if (result === false) {
+        editFnameValidate = false;
+        alert("Enter Valid First Name");
+        return editFnameValidate;
+    }
+}
+//Last name validation
+var editLnameValidate = false;
+function editLnameValidation(inputtxt) {
+    editLnameValidate = true;
+    var lname = new RegExp(/[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$/g);
+    var result = lname.test(inputtxt);
+
+    if (inputtxt == "") {
+        editLnameValidate = false;
+        alert("Enter Last Name");
+        return editLnameValidate;
+    }
+
+    else if (result === false) {
+        editLnameValidate = false;
+        alert("Enter Valid Last Name");
+        return editLnameValidate;
+    }
+}
+//Validates the phonenumber whether it is blank or invalid.
+var editNumValidate = [];
+var editNewNumValidate = [];
+function editPhoneValidation(inputtxt) {
+    var phone = new RegExp(/^(?:\+?1\s*(?:[.-]\s*)?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})?[-. ]?([0-9]{4})$/);
+    var result = phone.test(inputtxt);
+
+    if (inputtxt == "") {
+        editNumValidate.push(false);
+        alert("Enter Phone Number");
+        return editNumValidate;
+    }
+
+    else if (result === false) {
+        editNumValidate.push(false);
+        alert("Enter Valid Phone Number");
+        return editNumValidate;
+    } else {
+        editNumValidate.push(true);
+    }
+}
+
+
+//Validates the email whether it is blank or invalid.
+var editEmailValidate = [];
+var editNewEmailValidate = [];
+function editEmailValidation(inputtxt) {
+    var email = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+    var result = email.test(inputtxt);
+    console.log(inputtxt);
+    if (inputtxt == "") {
+        editEmailValidate.push(false);
+        alert("Enter Email");
+        return editEmailValidate;
+    }
+
+    else if (result === false) {
+        editEmailValidate.push(false);
+        alert("Enter Valid Email");
+        return editEmailValidate;
+    } else {
+        editEmailValidate.push(true);
+    }
+}
+//Testing is the phone and email validations are true.
+var testNumForTrue = true;
+var testEmailForTrue = true;
+function testTrue(data) {
+    return data == true;
+}
+
+function resetEntries() {
+    editNumValidate = [];
+    editNewNumValidate = [];
+    editEmailValidate = [];
+    editNewEmailValidate = [];
+    testNumForTrue = true;
+    testNewNumForTrue = true;
+    testEmailForTrue = true;
+    testNewEmailForTrue = true;
 }

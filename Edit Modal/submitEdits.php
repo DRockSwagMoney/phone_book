@@ -40,7 +40,7 @@
         $phonenumber = $_POST["editphonenumber"];
         $phonelength = count($phonenumber);        
 
-        $emailid = $_POST["editemailid"];
+        $emailid = $_POST["editmailid"];
         $emailidlength = count($emailid);
         $email = $_POST["editemail"];
         $emaillength = count($email);
