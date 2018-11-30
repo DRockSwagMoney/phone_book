@@ -65,7 +65,7 @@ $(document).on('click', '#deleteEditEmail', function () {
 //Submit button for the edit feature
 $(document).on('click', '#saveChanges', function () {
     event.preventDefault();
-    resetEntries();
+    resetEditEntries();
 
     editFnameValidation($('#editfname').val());
     editLnameValidation($('#editlname').val());
@@ -141,7 +141,7 @@ $(document).on('click', '#saveChanges', function () {
                 alert(data);
                 fetch_data();
                 resetEditCounters();
-                resetEntries();
+                resetEditEntries();
             }
         });
     }
@@ -275,7 +275,7 @@ function testTrue(data) {
     return data == true;
 }
 
-function resetEntries() {
+function resetEditEntries() {
     editNumValidate = [];
     editNewNumValidate = [];
     editEmailValidate = [];

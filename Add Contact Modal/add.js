@@ -22,10 +22,7 @@ $(document).on('click', '#closeemail', function () {
 //Add contact modal
 $(document).on('click', '#insert', function () {
     event.preventDefault();
-    numValidate = [];
-    emailValidate = [];
-    testNumForTrue = true;
-    testEmailForTrue = true;
+    resetEntries();
     
     fnameValidation($('#fname').val());
     lnameValidation($('#lname').val());
@@ -61,6 +58,7 @@ $(document).on('click', '#insert', function () {
                 removeInputs();
                 alert(data);
                 fetch_data();
+                resetEntries()
                 return true;
             }
         });
@@ -120,6 +118,7 @@ function lnameValidation(inputtxt) {
 }
 //Validates the phonenumber whether it is blank or invalid.
 var numValidate = [];
+var error = 0;
 function phoneValidation(inputtxt) {
     var phone = new RegExp(/^(?:\+?1\s*(?:[.-]\s*)?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})?[-. ]?([0-9]{4})$/);
     var result = phone.test(inputtxt); 
@@ -167,3 +166,11 @@ var testEmailForTrue = true;
 function testTrue(data) {
     return data == true;
 }
+
+function resetEntries() {
+    numValidate = [];
+    emailValidate = [];
+    testNumForTrue = true;
+    testEmailForTrue = true;
+}
+
