@@ -21,25 +21,33 @@ $(document).on('click', '#closeemail', function () {
 
 //Add contact modal
 $(document).on('click', '#insert', function () {
+    event.preventDefault();
     numValidate = [];
     emailValidate = [];
-    event.preventDefault();
+    testNumForTrue = true;
+    testEmailForTrue = true;
+    
     fnameValidation($('#fname').val());
     lnameValidation($('#lname').val());
+
     ($('[name^="phonenumber"]').each(function () {
         phoneValidation($(this).val());
     }));
+    testNumForTrue = numValidate.every(testTrue);
+
     ($('[name^="email"]').each(function () {
         emailValidation($(this).val());
     }));
 
+    testEmailForTrue = emailValidate.every(testTrue);
     if (fnameValidate === false) {
         return false;
     } else if (lnameValidate === false) {
         return false;
-    } else if (numValidate.every(testTrue) === false) {
+    } else if (testNumForTrue === false) {
         return false;
-    } else if (emailValidate.forEach === false) {
+    }
+    else if (testEmailForTrue === false) {
         return false;
     }
     else /*(fnameValidate === true && lnameValidate === true && numValidate[0] === true && numValidate[1] === true && emailValidate === true)*/ {
@@ -73,7 +81,7 @@ function removeInputs() {
     $('#removenum').remove();
     $('#removeemail').remove();
 }
-
+//first name validation
 var fnameValidate = false;
 function fnameValidation(inputtxt) {
     fnameValidate = true;
@@ -81,19 +89,18 @@ function fnameValidation(inputtxt) {
     var result = fname.test(inputtxt);
 
     if (inputtxt == "") {
-        event.preventDefault();
-        alert("Enter First Name");
         fnameValidate = false;
+        alert("Enter First Name");
         return fnameValidate;
     }
 
     else if (result === false) {
-        alert("Enter Valid First Name");
-        event.preventDefault();
         fnameValidate = false;
+        alert("Enter Valid First Name");
         return fnameValidate;
     }
 }
+//Last name validation
 var lnameValidate = false;
 function lnameValidation(inputtxt) {
     lnameValidate = true;
@@ -101,20 +108,18 @@ function lnameValidation(inputtxt) {
     var result = lname.test(inputtxt);
 
     if (inputtxt == "") {
-        event.preventDefault();
-        alert("Enter Last Name");
         lnameValidate = false;
+        alert("Enter Last Name");
         return lnameValidate;
     }
 
     else if (result === false) {
-        alert("Enter Valid Last Name");
-        event.preventDefault();
         lnameValidate = false;
+        alert("Enter Valid Last Name");
         return lnameValidate;
     }
 }
-
+//Validates the phonenumber whether it is blank or invalid.
 var numValidate = [];
 function phoneValidation(inputtxt) {
     var phone = new RegExp(/^(?:\+?1\s*(?:[.-]\s*)?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})?[-. ]?([0-9]{4})$/);
@@ -122,47 +127,43 @@ function phoneValidation(inputtxt) {
     console.log(inputtxt);
 
     if (inputtxt == "") {
-        event.preventDefault();
-        alert("Enter Phone Number");
         numValidate.push(false);
+        alert("Enter Phone Number");
         return numValidate;
     }
 
     else if (result === false) {
-        alert("Enter Valid Phone Number");
-        event.preventDefault();
         numValidate.push(false);
+        alert("Enter Valid Phone Number");
         return numValidate;
     } else {
         numValidate.push(true);
-        }
-}
-
-function testTrue(data) {
-    for (i = 0; i < data.length; i++) {
-        if (data[i] === false) {
-            return false;
-        } 
-     alert(data);
     }
+    console.dir(numValidate);
 }
 
+
+//Validates the email whether it is blank or invalid.
 var emailValidate = [];
 function emailValidation(inputtxt) {
     var email = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
     var result = email.test(inputtxt);
 
     if (inputtxt == "") {
-        event.preventDefault();
-        alert("Enter Email");
         emailValidate.push(false);
+        alert("Enter Email");
         return emailValidate;
     }
 
     else if (result === false) {
-        alert("Enter Valid Email");
-        event.preventDefault();
         emailValidate.push(false);
+        alert("Enter Valid Email");
         return emailValidate;
     }
+}
+//Testing is the phone and email validations are true.
+var testNumForTrue = true;
+var testEmailForTrue = true;
+function testTrue(data) {
+    return data == true;
 }
