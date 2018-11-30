@@ -82,8 +82,8 @@
         $output .=              '<div id="'.$row["id"].'">
                                     <div class="row">
                                         <div class="col-sm-10">
-                                            <input type="hidden" style="display:none" class="form-control" name="editemailid[]" value="'.$row["id"].'"/>
-                                            <input class="form-control" type="text" name="editemail[]" id="editemail" value="'.$row["email"].'"/>
+                                            <input type="hidden" style="display:none" class="form-control" name="editmailid[]" value="'.$row["id"].'"/>
+                                            <input class="form-control" type="email" name="editemail[]" id="editemail" value="'.$row["email"].'"/>
                                         </div>
                                         <div class="col">
                                             <button type="button" id="deleteEditEmail" data-id7="'.$row["id"].'" name="deleteEditEmail" class="btn btn-danger">&times;</button>

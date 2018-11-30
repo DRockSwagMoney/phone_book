@@ -34,7 +34,6 @@ $(document).on('click', '#insert', function () {
         phoneValidation($(this).val());
     }));
     testNumForTrue = numValidate.every(testTrue);
-    numValidate.every(changeCSS);
     ($('[name^="email"]').each(function () {
         emailValidation($(this).val());
     }));
@@ -158,6 +157,8 @@ function emailValidation(inputtxt) {
         emailValidate.push(false);
         alert("Enter Valid Email");
         return emailValidate;
+    } else {
+        emailValidate.push(true);
     }
 }
 //Testing is the phone and email validations are true.
@@ -165,9 +166,4 @@ var testNumForTrue = true;
 var testEmailForTrue = true;
 function testTrue(data) {
     return data == true;
-}
-
-//Want to change the CSS of the field when it has an error.
-function changeCSS() {
-    document.getElementsByName("phonenumber").style.backgroundColor = "red";
 }
