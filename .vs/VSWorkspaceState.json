@@ -1,10 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Add Contact Modal",
+    "\\Edit Modal",
     "\\HTML",
     "\\JavaScript",
     "\\PHP"
   ],
-  "SelectedNode": "\\JavaScript\\main.js",
+  "SelectedNode": "\\Add Contact Modal\\add.js",
   "PreviewInSolutionExplorer": false
 }

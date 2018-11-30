@@ -5,7 +5,7 @@ $(document).ready(function () {
     });
     //Button to add email in add contact function
     $('#addEmailBtn').click(function () {
-        $('#addNewEmailField').append("<div id='removeemail'> <div class='row'><div class='col-sm-10'><input type='text' name='email[]' id='email' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='closeemail'>&times;</button></div></div><br/></div>");
+        $('#addNewEmailField').append("<div id='removeemail'> <div class='row'><div class='col-sm-10'><input type='email' name='email[]' id='email' class='form-control' /></div><div class='col'><button type='button' class='btn btn-danger' id='closeemail'>&times;</button></div></div><br/></div>");
     });
 
 });
@@ -22,23 +22,35 @@ $(document).on('click', '#closeemail', function () {
 //Add contact modal
 $(document).on('click', '#insert', function () {
     event.preventDefault();
-    if ($('#fname').val() == '') {
-        alert("Enter First Name");
+    numValidate = [];
+    emailValidate = [];
+    testNumForTrue = true;
+    testEmailForTrue = true;
+    
+    fnameValidation($('#fname').val());
+    lnameValidation($('#lname').val());
+
+    ($('[name^="phonenumber"]').each(function () {
+        phoneValidation($(this).val());
+    }));
+    testNumForTrue = numValidate.every(testTrue);
+    numValidate.every(changeCSS);
+    ($('[name^="email"]').each(function () {
+        emailValidation($(this).val());
+    }));
+
+    testEmailForTrue = emailValidate.every(testTrue);
+    if (fnameValidate === false) {
+        return false;
+    } else if (lnameValidate === false) {
+        return false;
+    } else if (testNumForTrue === false) {
         return false;
     }
-    else if ($('#lname').val() == '') {
-        alert("Enter Last Name");
+    else if (testEmailForTrue === false) {
         return false;
     }
-    else if ($('#phonenumber').val() == '') {
-        alert("Enter Phone Number");
-        return false;
-    }
-    else if ($('#email').val() == '') {
-        alert("Enter Email");
-        return false;
-    }
-    else {
+    else /*(fnameValidate === true && lnameValidate === true && numValidate[0] === true && numValidate[1] === true && emailValidate === true)*/ {
         $.ajax({
             url: "Add Contact Modal/insert.php",
             type: "POST",
@@ -60,10 +72,102 @@ $(document).on('click', '#insert', function () {
 $(document).on('hidden.bs.modal', '#addContact', function () {
     $('#removenum').remove();
     $('#removeemail').remove();
+    $('#insertForm')[0].reset();
+    numValidate = [];
 });
 
 //Hides extra fields in the Add Contact modal after submission
 function removeInputs() {
     $('#removenum').remove();
     $('#removeemail').remove();
+}
+//first name validation
+var fnameValidate = false;
+function fnameValidation(inputtxt) {
+    fnameValidate = true;
+    var fname = new RegExp(/[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$/g);
+    var result = fname.test(inputtxt);
+
+    if (inputtxt == "") {
+        fnameValidate = false;
+        alert("Enter First Name");
+        return fnameValidate;
+    }
+
+    else if (result === false) {
+        fnameValidate = false;
+        alert("Enter Valid First Name");
+        return fnameValidate;
+    }
+}
+//Last name validation
+var lnameValidate = false;
+function lnameValidation(inputtxt) {
+    lnameValidate = true;
+    var lname = new RegExp(/[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$/g);
+    var result = lname.test(inputtxt);
+
+    if (inputtxt == "") {
+        lnameValidate = false;
+        alert("Enter Last Name");
+        return lnameValidate;
+    }
+
+    else if (result === false) {
+        lnameValidate = false;
+        alert("Enter Valid Last Name");
+        return lnameValidate;
+    }
+}
+//Validates the phonenumber whether it is blank or invalid.
+var numValidate = [];
+function phoneValidation(inputtxt) {
+    var phone = new RegExp(/^(?:\+?1\s*(?:[.-]\s*)?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})?[-. ]?([0-9]{4})$/);
+    var result = phone.test(inputtxt); 
+    console.log(inputtxt);
+
+    if (inputtxt == "") {
+        numValidate.push(false);
+        alert("Enter Phone Number");
+        return numValidate;
+    }
+
+    else if (result === false) {
+        numValidate.push(false);
+        alert("Enter Valid Phone Number");
+        return numValidate;
+    } else {
+        numValidate.push(true);
+    }
+}
+
+
+//Validates the email whether it is blank or invalid.
+var emailValidate = [];
+function emailValidation(inputtxt) {
+    var email = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+    var result = email.test(inputtxt);
+
+    if (inputtxt == "") {
+        emailValidate.push(false);
+        alert("Enter Email");
+        return emailValidate;
+    }
+
+    else if (result === false) {
+        emailValidate.push(false);
+        alert("Enter Valid Email");
+        return emailValidate;
+    }
+}
+//Testing is the phone and email validations are true.
+var testNumForTrue = true;
+var testEmailForTrue = true;
+function testTrue(data) {
+    return data == true;
+}
+
+//Want to change the CSS of the field when it has an error.
+function changeCSS() {
+    document.getElementsByName("phonenumber").style.backgroundColor = "red";
 }
