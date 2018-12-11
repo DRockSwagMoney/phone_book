@@ -36,10 +36,15 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <form method="post" id="insertForm">
+                            <form method="post" id="insertForm" class="needs-validation" novalidate>
                                 <!--<input type="hidden" name="id" id="id" class="form-control"/>-->
                                 <label>Enter First Name:</label>
-                                <input type="text" name="fname" id="fname" class="form-control" />
+                                <div class="input-group">
+                                    <input type="text" name="fname" id="fname" class="form-control" required/>
+                                    <div class="invalid-feedback">
+                                        Please use a valid name.
+                                    </div>
+                                </div>
                                 <br />
                                 <label>Enter Last Name:</label>
                                 <input type="text" name="lname" id="lname" class="form-control" />

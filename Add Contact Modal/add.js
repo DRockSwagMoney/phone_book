@@ -87,13 +87,13 @@ function fnameValidation(inputtxt) {
 
     if (inputtxt == "") {
         fnameValidate = false;
-        alert("Enter First Name");
+        //alert("Enter First Name");
         return fnameValidate;
     }
 
     else if (result === false) {
         fnameValidate = false;
-        alert("Enter Valid First Name");
+        //alert("Enter Valid First Name");
         return fnameValidate;
     }
 }
@@ -106,13 +106,13 @@ function lnameValidation(inputtxt) {
 
     if (inputtxt == "") {
         lnameValidate = false;
-        alert("Enter Last Name");
+        //alert("Enter Last Name");
         return lnameValidate;
     }
 
     else if (result === false) {
         lnameValidate = false;
-        alert("Enter Valid Last Name");
+        //alert("Enter Valid Last Name");
         return lnameValidate;
     }
 }
@@ -126,13 +126,13 @@ function phoneValidation(inputtxt) {
 
     if (inputtxt == "") {
         numValidate.push(false);
-        alert("Enter Phone Number");
+        //alert("Enter Phone Number");
         return numValidate;
     }
 
     else if (result === false) {
         numValidate.push(false);
-        alert("Enter Valid Phone Number");
+       //alert("Enter Valid Phone Number");
         return numValidate;
     } else {
         numValidate.push(true);
@@ -148,13 +148,13 @@ function emailValidation(inputtxt) {
 
     if (inputtxt == "") {
         emailValidate.push(false);
-        alert("Enter Email");
+        //alert("Enter Email");
         return emailValidate;
     }
 
     else if (result === false) {
         emailValidate.push(false);
-        alert("Enter Valid Email");
+        //alert("Enter Valid Email");
         return emailValidate;
     } else {
         emailValidate.push(true);
@@ -174,3 +174,21 @@ function resetEntries() {
     testEmailForTrue = true;
 }
 
+//Form Validation with CSS
+(function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('invalid-feedback');
+            }, false);
+        });
+    }, false);
+})();
