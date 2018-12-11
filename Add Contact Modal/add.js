@@ -20,10 +20,11 @@ $(document).on('click', '#closeemail', function () {
 });
 
 //Add contact modal
+
 $(document).on('click', '#insert', function () {
     event.preventDefault();
     resetEntries();
-    
+
     fnameValidation($('#fname').val());
     lnameValidation($('#lname').val());
 
@@ -36,17 +37,10 @@ $(document).on('click', '#insert', function () {
     }));
 
     testEmailForTrue = emailValidate.every(testTrue);
-    if (fnameValidate === false) {
+    if (fnameValidate === false || lnameValidate === false || testNumForTrue === false || testEmailForTrue === false) {
+        cssValidation();
         return false;
-    } else if (lnameValidate === false) {
-        return false;
-    } else if (testNumForTrue === false) {
-        return false;
-    }
-    else if (testEmailForTrue === false) {
-        return false;
-    }
-    else /*(fnameValidate === true && lnameValidate === true && numValidate[0] === true && numValidate[1] === true && emailValidate === true)*/ {
+    } else  {
         $.ajax({
             url: "Add Contact Modal/insert.php",
             type: "POST",
@@ -96,6 +90,7 @@ function fnameValidation(inputtxt) {
         //alert("Enter Valid First Name");
         return fnameValidate;
     }
+
 }
 //Last name validation
 var lnameValidate = false;
@@ -121,8 +116,7 @@ var numValidate = [];
 var error = 0;
 function phoneValidation(inputtxt) {
     var phone = new RegExp(/^(?:\+?1\s*(?:[.-]\s*)?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})?[-. ]?([0-9]{4})$/);
-    var result = phone.test(inputtxt); 
-    console.log(inputtxt);
+    var result = phone.test(inputtxt);
 
     if (inputtxt == "") {
         numValidate.push(false);
@@ -174,21 +168,18 @@ function resetEntries() {
     testEmailForTrue = true;
 }
 
-//Form Validation with CSS
-(function() {
+function cssValidation() {
     'use strict';
-    window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function (form) {
-            form.addEventListener('submit', function (event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('invalid-feedback');
-            }, false);
-        });
-    }, false);
-})();
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('add-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+    });
+
+}

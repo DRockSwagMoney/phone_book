@@ -36,44 +36,59 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <form method="post" id="insertForm" class="needs-validation" novalidate>
-                                <!--<input type="hidden" name="id" id="id" class="form-control"/>-->
-                                <label>Enter First Name:</label>
-                                <div class="input-group">
-                                    <input type="text" name="fname" id="fname" class="form-control" required/>
+                            <form method="post" id="insertForm" class="add-validation" novalidate>
+                                <div class="form-group">
+                                    <label for="fname">Enter First Name:</label>
+                                    <div class="input-group">
+                                        <input type="text" name="fname" id="fname" class="form-control" required/>
+                                        <div class="invalid-feedback">
+                                            Please endter a valid first name.
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <label for="lname">Enter Last Name:</label>
+                                    <input type="text" name="lname" id="lname" class="form-control" required/>
                                     <div class="invalid-feedback">
-                                        Please use a valid name.
+                                        Please enter a valid last name.
                                     </div>
                                 </div>
                                 <br />
-                                <label>Enter Last Name:</label>
-                                <input type="text" name="lname" id="lname" class="form-control" />
-                                <br />
-                                <label>Enter Phone Number(s):</label>
-                                <div id="addNewNumField">
-                                    <div class="row">
-                                        <div class="col-sm-10">
-                                            <input type="text" name="phonenumber[]" id="phonenumber" class="form-control" />
+                                <div class="form-group">
+                                    <label for="phonenumber">Enter Phone Number(s):</label>
+                                    <div id="addNewNumField">
+                                        <div class="row">
+                                            <div class="col-sm-10">
+                                                <input type="text" name="phonenumber[]" id="phonenumber" class="form-control" required/>
+                                                <div class="invalid-feedback">
+                                                    Please enter a valid phone number.
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <button type="button" class="btn btn-primary" name="addNumBtn" id="addNumBtn">+</button>
+                                            </div>
                                         </div>
-                                        <div class="col">
-                                            <button type="button" class="btn btn-primary" name="addNumBtn" id="addNumBtn">+</button>
-                                        </div>
+                                        <br/>
                                     </div>
-                                    <br/>
                                 </div>
-                                <label>Enter Email(s):</label>
-                                <div id="addNewEmailField">
-                                    <div class="row">
-                                        <div class="col-sm-10">
-                                            <input type="email" name="email[]" id="email" class="form-control" />
+                                <div class="form-group">
+                                    <label for="email">Enter Email(s):</label>
+                                    <div id="addNewEmailField">
+                                        <div class="row">
+                                            <div class="col-sm-10">
+                                                <input type="email" name="email[]" id="email" class="form-control" required/>
+                                                <div class="invalid-feedback">
+                                                    Please enter a valid email.
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <button type="button" class="btn btn-primary" name="addEmailBtn" id="addEmailBtn">+</button>
+                                            </div>
                                         </div>
-                                        <div class="col">
-                                            <button type="button" class="btn btn-primary" name="addEmailBtn" id="addEmailBtn">+</button>
-                                        </div>
+                                        <br/>
                                     </div>
-                                    <br/>
-                                </div>                              
-                            
+                                </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
