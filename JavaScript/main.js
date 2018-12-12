@@ -1,6 +1,7 @@
 // JavaScript source code
 $(document).ready(function () {
     fetch_data();
+    number_of_records();
 });
 
 function fetch_data() {
@@ -10,6 +11,16 @@ function fetch_data() {
         success: function (data) {
             $('#live_data').html(data);
         }
+    });
+}
+
+function number_of_records() {
+    $.ajax({
+       url: "PHP/records.php",
+       method: "post",
+       success: function (data) {
+           $('#records').html(data);
+       }
     });
 }
 
