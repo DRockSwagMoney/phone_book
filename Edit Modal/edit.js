@@ -65,7 +65,7 @@ $(document).on('click', '#deleteEditEmail', function () {
 //Submit button for the edit feature
 $(document).on('click', '#saveChanges', function () {
     event.preventDefault();
-    resetEntries();
+    resetEditEntries();
 
     editFnameValidation($('#editfname').val());
     editLnameValidation($('#editlname').val());
@@ -89,20 +89,8 @@ $(document).on('click', '#saveChanges', function () {
     console.log(editEmailValidate);
     testEmailForTrue = editEmailValidate.every(testTrue);
     testNewEmailForTrue = editNewEmailValidate.every(testTrue);
-    if (editFnameValidate === false) {
-        return false;
-    } else if (editLnameValidate === false) {
-        return false;
-    } else if (testNumForTrue === false) {
-        return false;
-    }
-    else if (testEmailForTrue === false) {
-        return false;
-    }
-    else if (testNewNumForTrue === false) {
-        return false;
-    }
-    else if (testNewEmailForTrue === false) {
+    if (editFnameValidate === false || editLnameValidate === false || testNumForTrue === false || testEmailForTrue === false || testNewNumForTrue === false || testNewEmailForTrue === false) {
+        editValidation();
         return false;
     }
     else {
@@ -140,8 +128,9 @@ $(document).on('click', '#saveChanges', function () {
                 $('#editContact').modal('toggle');
                 alert(data);
                 fetch_data();
+                number_of_records();
                 resetEditCounters();
-                resetEntries();
+                resetEditEntries();
             }
         });
     }
@@ -195,13 +184,13 @@ function editFnameValidation(inputtxt) {
 
     if (inputtxt == "") {
         editFnameValidate = false;
-        alert("Enter First Name");
+        //alert("Enter First Name");
         return editFnameValidate;
     }
 
     else if (result === false) {
         editFnameValidate = false;
-        alert("Enter Valid First Name");
+        //alert("Enter Valid First Name");
         return editFnameValidate;
     }
 }
@@ -214,13 +203,13 @@ function editLnameValidation(inputtxt) {
 
     if (inputtxt == "") {
         editLnameValidate = false;
-        alert("Enter Last Name");
+        //alert("Enter Last Name");
         return editLnameValidate;
     }
 
     else if (result === false) {
         editLnameValidate = false;
-        alert("Enter Valid Last Name");
+        //alert("Enter Valid Last Name");
         return editLnameValidate;
     }
 }
@@ -233,13 +222,13 @@ function editPhoneValidation(inputtxt) {
 
     if (inputtxt == "") {
         editNumValidate.push(false);
-        alert("Enter Phone Number");
+        //alert("Enter Phone Number");
         return editNumValidate;
     }
 
     else if (result === false) {
         editNumValidate.push(false);
-        alert("Enter Valid Phone Number");
+        //alert("Enter Valid Phone Number");
         return editNumValidate;
     } else {
         editNumValidate.push(true);
@@ -256,13 +245,13 @@ function editEmailValidation(inputtxt) {
     console.log(inputtxt);
     if (inputtxt == "") {
         editEmailValidate.push(false);
-        alert("Enter Email");
+        //alert("Enter Email");
         return editEmailValidate;
     }
 
     else if (result === false) {
         editEmailValidate.push(false);
-        alert("Enter Valid Email");
+        //alert("Enter Valid Email");
         return editEmailValidate;
     } else {
         editEmailValidate.push(true);
@@ -275,7 +264,7 @@ function testTrue(data) {
     return data == true;
 }
 
-function resetEntries() {
+function resetEditEntries() {
     editNumValidate = [];
     editNewNumValidate = [];
     editEmailValidate = [];
@@ -284,4 +273,20 @@ function resetEntries() {
     testNewNumForTrue = true;
     testEmailForTrue = true;
     testNewEmailForTrue = true;
+}
+
+function editValidation() {
+    'use strict';
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('edit-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+    });
+
 }

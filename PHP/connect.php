@@ -1,8 +1,11 @@
 <?php
     //Create Connection
-    $servername = "127.0.0.1";
+    $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "phone_book";
+    $dbname = "phone_book"; //Name of database
+    $tablename = "second_phonebook"; //Name of table
+    $tnnumbers = "phone_numbers"; //Name of the phone numbers table
+    $tnemails = "emails"; //Name of the emails table
     $conn = new mysqli($servername, $username, $password, $dbname);
 ?>

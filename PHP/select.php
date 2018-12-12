@@ -3,19 +3,21 @@
     include 'connect.php';
 
     $output = '';
-    $sql = "SELECT * FROM second_phonebook
+    $sql = "SELECT * FROM $tablename
             ORDER BY firstname ASC";
     $result = $conn->query($sql);
     $output .= '
-                <div class="table-responsive">
+                <div class="table-responsive table-wrapper-scroll-y">
                     <table class="table" id="phoneBookTable">
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>View</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>';
+                            <thead >
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>View</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>';
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $output .=                             

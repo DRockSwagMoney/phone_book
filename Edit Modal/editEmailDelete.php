@@ -3,7 +3,7 @@
     include '../PHP/connect.php';
 
     $deleteid = $_POST["deleteEmailId"];
-    $emailsql = $conn->prepare("DELETE FROM emails WHERE id = ? ");
+    $emailsql = $conn->prepare("DELETE FROM $tnemails WHERE id = ? ");
     $emailsql->bind_param("i", $deleteidvalue);
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {

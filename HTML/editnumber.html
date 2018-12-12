@@ -1,7 +1,10 @@
 <div id="removeeditnum">
     <div class="row">
         <div class="col-sm-10">
-            <input class="form-control" type="text" name="neweditphonenumber[]" id="neweditphonenumber" />
+            <input class="form-control" type="text" name="neweditphonenumber[]" id="neweditphonenumber" required/>
+            <div class="invalid-feedback">
+                Please enter a valid phone number.
+            </div>
         </div>
         <div class="col">
             <button type="button" id="closeeditnum" name="removeNumber" class="btn btn-danger">&times;</button>

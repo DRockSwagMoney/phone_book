@@ -1,0 +1,24 @@
+.table-wrapper-scroll-y {
+    display: block;
+    max-height: 400px;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid grey;
+}
+
+tbody, thead tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+thead {
+    display:block;
+    position: sticky;
+    top:0px;
+    background-color: white;
+}
+table {
+    display: block;
+
+}
+* {box-sizing:border-box; border-collapse:collapse;}

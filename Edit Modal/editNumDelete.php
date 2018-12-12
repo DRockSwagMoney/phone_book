@@ -3,7 +3,7 @@
     include '../PHP/connect.php';
     
     $deleteid = $_POST["deleteNumberId"];
-    $phonenumbersql = $conn->prepare("DELETE FROM phone_numbers WHERE id = ? ");
+    $phonenumbersql = $conn->prepare("DELETE FROM $tnnumbers WHERE id = ? ");
     $phonenumbersql->bind_param("i", $deleteidvalue);
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
