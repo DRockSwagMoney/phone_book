@@ -184,13 +184,13 @@ function editFnameValidation(inputtxt) {
 
     if (inputtxt == "") {
         editFnameValidate = false;
-        alert("Enter First Name");
+        //alert("Enter First Name");
         return editFnameValidate;
     }
 
     else if (result === false) {
         editFnameValidate = false;
-        alert("Enter Valid First Name");
+        //alert("Enter Valid First Name");
         return editFnameValidate;
     }
 }
@@ -203,13 +203,13 @@ function editLnameValidation(inputtxt) {
 
     if (inputtxt == "") {
         editLnameValidate = false;
-        alert("Enter Last Name");
+        //alert("Enter Last Name");
         return editLnameValidate;
     }
 
     else if (result === false) {
         editLnameValidate = false;
-        alert("Enter Valid Last Name");
+        //alert("Enter Valid Last Name");
         return editLnameValidate;
     }
 }
@@ -222,13 +222,13 @@ function editPhoneValidation(inputtxt) {
 
     if (inputtxt == "") {
         editNumValidate.push(false);
-        alert("Enter Phone Number");
+        //alert("Enter Phone Number");
         return editNumValidate;
     }
 
     else if (result === false) {
         editNumValidate.push(false);
-        alert("Enter Valid Phone Number");
+        //alert("Enter Valid Phone Number");
         return editNumValidate;
     } else {
         editNumValidate.push(true);
@@ -245,13 +245,13 @@ function editEmailValidation(inputtxt) {
     console.log(inputtxt);
     if (inputtxt == "") {
         editEmailValidate.push(false);
-        alert("Enter Email");
+        //alert("Enter Email");
         return editEmailValidate;
     }
 
     else if (result === false) {
         editEmailValidate.push(false);
-        alert("Enter Valid Email");
+        //alert("Enter Valid Email");
         return editEmailValidate;
     } else {
         editEmailValidate.push(true);

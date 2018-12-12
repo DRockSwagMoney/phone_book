@@ -5,7 +5,7 @@
     $output = '';
     $sql = '';
     $id = $_POST["id"];
-    $sql = "SELECT * FROM second_phonebook WHERE id = $id";
+    $sql = "SELECT * FROM $tablename WHERE id = $id";
     $phonenumbersql = "SELECT * FROM phone_numbers WHERE userid = $id";
     $emailsql = "SELECT * FROM emails WHERE userid = $id";
 

@@ -6,27 +6,27 @@
     $y=0;
     $z=0;
     $output = '';
-    $names = $conn->prepare("UPDATE second_phonebook 
+    $names = $conn->prepare("UPDATE $tablename 
                     SET firstname=?, lastname=?
                     WHERE id =?");
     $names->bind_param("ssi", $firstname, $lastname, $id);
     
     //Phone number preparation
-    $numbers = $conn->prepare("UPDATE phone_numbers
+    $numbers = $conn->prepare("UPDATE $tnnumbers
                                 SET number=?
                                 WHERE id=?");
     $numbers->bind_param("si", $phonenumbervalue, $numidvalue);
 
-    $newnumbers = $conn->prepare("INSERT INTO phone_numbers (userid, number)
+    $newnumbers = $conn->prepare("INSERT INTO $tnnumbers (userid, number)
                             VALUES (?, ?)");
     $newnumbers->bind_param("is", $id, $newnumbervalue);
 
     //Email preparation
-    $emails = $conn->prepare("UPDATE emails 
+    $emails = $conn->prepare("UPDATE $tnemails 
                             SET email=?
                             WHERE id=?");
     $emails->bind_param("si", $emailvalue, $emailidvalue);
-    $newemails = $conn->prepare("INSERT INTO emails (userid, email)
+    $newemails = $conn->prepare("INSERT INTO $tnemails (userid, email)
                                 VALUES (?, ?)");
     $newemails->bind_param("is", $id, $newemailvalue);
 

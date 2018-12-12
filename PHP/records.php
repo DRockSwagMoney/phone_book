@@ -8,7 +8,7 @@
 //connect to database
 include 'connect.php';
 
-$sql = "SELECT * FROM second_phonebook";
+$sql = "SELECT * FROM $tablename";
 $result = $conn->query($sql);
 $output = $result->num_rows;
 echo "Number of contacts: <strong>$output</strong> \n";
