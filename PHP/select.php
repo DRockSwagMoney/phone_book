@@ -3,7 +3,7 @@
     include 'connect.php';
 
     $output = '';
-    $sql = "SELECT * FROM second_phonebook
+    $sql = "SELECT * FROM $tablename
             ORDER BY firstname ASC";
     $result = $conn->query($sql);
     $output .= '

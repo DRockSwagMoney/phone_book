@@ -17,20 +17,26 @@
     $output .= '<div id="editContact" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                        <form id="makeEdits" method="post" class="edit-validation">';
+                        <form id="makeEdits" method="post" class="edit-validation" novalidate>';
     if($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
                 $output .= '<div class="modal-header">
                                 <h4 class="modal-title">
                                     <div class="row">
                                         <div class="col">
-                                            <input type="hidden" style="display:none" class="form-control" name="editid" value="'.$row["id"].'"/>
+                                            <input type="hidden" style="display:none" class="form-control" name="editid" value="'.$row["id"].'" required/>
                                             <label>First Name: </label>
                                             <input class="form-control" type="text" name="editfname" id="editfname" value="'.$row["firstname"].'"/>
+                                            <div class="invalid-feedback">
+                                            Please enter a valid first name.
+                                            </div>
                                         </div>
                                         <div class="col">
                                             <label>Last Name: </label>
-                                            <input class="form-control" type="text" name="editlname" id="editlname" value="'.$row["lastname"].'"/>
+                                            <input class="form-control" type="text" name="editlname" id="editlname" value="'.$row["lastname"].'" required/>
+                                            <div class="invalid-feedback">
+                                            Please enter a valid last name.
+                                            </div>
                                         </div>    
                                     </div>
                                 </h4>
@@ -55,7 +61,10 @@
                                 <div class="row">
                                     <div class="col-sm-10">
                                         <input type="hidden" style="display:none" class="form-control" name="editnumberid[]" value="'.$row["id"].'"/>
-                                        <input class="form-control" type="text" name="editphonenumber[]" id="editphonenumber" value="'.$row["number"].'"/>
+                                        <input class="form-control" type="text" name="editphonenumber[]" id="editphonenumber" value="'.$row["number"].'" required/>
+                                        <div class="invalid-feedback">
+                                            Please enter a valid phone number.
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <button type="button" id="deleteEditNumber" data-id6="'.$row["id"].'" name="deleteEditNumber" class="btn btn-danger">&times;</button>
@@ -83,7 +92,10 @@
                                     <div class="row">
                                         <div class="col-sm-10">
                                             <input type="hidden" style="display:none" class="form-control" name="editmailid[]" value="'.$row["id"].'"/>
-                                            <input class="form-control" type="email" name="editemail[]" id="editemail" value="'.$row["email"].'"/>
+                                            <input class="form-control" type="email" name="editemail[]" id="editemail" value="'.$row["email"].'" required/>
+                                            <div class="invalid-feedback">
+                                            Please enter a valid email.
+                                            </div>
                                         </div>
                                         <div class="col">
                                             <button type="button" id="deleteEditEmail" data-id7="'.$row["id"].'" name="deleteEditEmail" class="btn btn-danger">&times;</button>

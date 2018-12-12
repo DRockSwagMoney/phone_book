@@ -42,7 +42,7 @@
                                     <div class="input-group">
                                         <input type="text" name="fname" id="fname" class="form-control" required/>
                                         <div class="invalid-feedback">
-                                            Please endter a valid first name.
+                                            Please enter a valid first name.
                                         </div>
                                     </div>
                                 </div>
