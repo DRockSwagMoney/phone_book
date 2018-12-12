@@ -9,15 +9,15 @@
     $output .= '
                 <div class="table-responsive table-wrapper-scroll-y">
                     <table class="table" id="phoneBookTable">
-                        <thead>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>View</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>';
+                            <thead >
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>View</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>';
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $output .=                             
