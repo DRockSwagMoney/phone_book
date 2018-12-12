@@ -23,12 +23,10 @@
             <button class="btn btn-success" data-target="#addContact" data-toggle="modal" type="button">Add Contact</button>
         </div>
         <br/>
+        <div id="records"></div><!--This will show the number of records in the phonebook-->
         <div id="live_data"></div><!--Select.php that forms the table here-->
         <div id="view_data"></div><!--This is where the view modal will pop up-->
         <div id="edit_data"></div><!--This is where the edit modal will pop up-->
-        <div id="records"></div><!--This will show the number of records in the phonebook-->
-
-
 
         <div id="addContact" class="modal fade">
                 <div class="modal-dialog">

@@ -36,6 +36,7 @@ $(document).on('click', '#btn_delete', function () {
             success: function (data) {
                 alert(data);
                 fetch_data();
+                number_of_records();
             }
         });
     }

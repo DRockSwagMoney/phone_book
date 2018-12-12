@@ -7,11 +7,10 @@
  */
 //connect to database
 include 'connect.php';
-$output = '';
-$sql = 'SELECT COUNT(*) FROM second_phonebook';
-$output = ($sql);
-if ($conn->query($sql) === TRUE) {
-    echo "Number of records = ".$output;
-} else {
-    echo 'Error: ' . $sql . $conn->error_;
-}
+
+$sql = "SELECT * FROM second_phonebook";
+$result = $conn->query($sql);
+$output = $result->num_rows;
+echo "Number of contacts: <strong>$output</strong> \n";
+echo $conn->error;
+

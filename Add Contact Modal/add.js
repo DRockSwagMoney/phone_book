@@ -52,7 +52,8 @@ $(document).on('click', '#insert', function () {
                 removeInputs();
                 alert(data);
                 fetch_data();
-                resetEntries()
+                number_of_records();
+                resetEntries();
                 return true;
             }
         });

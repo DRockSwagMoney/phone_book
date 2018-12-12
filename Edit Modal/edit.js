@@ -140,6 +140,7 @@ $(document).on('click', '#saveChanges', function () {
                 $('#editContact').modal('toggle');
                 alert(data);
                 fetch_data();
+                number_of_records();
                 resetEditCounters();
                 resetEditEntries();
             }
