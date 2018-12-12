@@ -89,20 +89,8 @@ $(document).on('click', '#saveChanges', function () {
     console.log(editEmailValidate);
     testEmailForTrue = editEmailValidate.every(testTrue);
     testNewEmailForTrue = editNewEmailValidate.every(testTrue);
-    if (editFnameValidate === false) {
-        return false;
-    } else if (editLnameValidate === false) {
-        return false;
-    } else if (testNumForTrue === false) {
-        return false;
-    }
-    else if (testEmailForTrue === false) {
-        return false;
-    }
-    else if (testNewNumForTrue === false) {
-        return false;
-    }
-    else if (testNewEmailForTrue === false) {
+    if (editFnameValidate === false || editLnameValidate === false || testNumForTrue === false || testEmailForTrue === false || testNewNumForTrue === false || testNewEmailForTrue === false) {
+        editValidation();
         return false;
     }
     else {
@@ -285,4 +273,20 @@ function resetEditEntries() {
     testNewNumForTrue = true;
     testEmailForTrue = true;
     testNewEmailForTrue = true;
+}
+
+function editValidation() {
+    'use strict';
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('edit-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+    });
+
 }

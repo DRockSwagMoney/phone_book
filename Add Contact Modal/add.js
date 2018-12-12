@@ -38,7 +38,7 @@ $(document).on('click', '#insert', function () {
 
     testEmailForTrue = emailValidate.every(testTrue);
     if (fnameValidate === false || lnameValidate === false || testNumForTrue === false || testEmailForTrue === false) {
-        cssValidation();
+        addValidation();
         return false;
     } else  {
         $.ajax({
@@ -169,7 +169,7 @@ function resetEntries() {
     testEmailForTrue = true;
 }
 
-function cssValidation() {
+function addValidation() {
     'use strict';
 
     // Fetch all the forms we want to apply custom Bootstrap validation styles to

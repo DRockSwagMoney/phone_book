@@ -17,7 +17,7 @@
     $output .= '<div id="editContact" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                        <form id="makeEdits" method="post">';
+                        <form id="makeEdits" method="post" class="edit-validation">';
     if($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
                 $output .= '<div class="modal-header">
