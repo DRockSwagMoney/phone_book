@@ -168,7 +168,7 @@ function resetEntries() {
     testNumForTrue = true;
     testEmailForTrue = true;
 }
-
+//Css that comes with the validation fields
 function addValidation() {
     'use strict';
 
