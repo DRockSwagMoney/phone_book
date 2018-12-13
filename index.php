@@ -38,7 +38,7 @@
                         <div class="modal-body">
                             <form method="post" id="insertForm" class="add-validation" novalidate>
                                 <div class="form-group">
-                                    <label for="fname">Enter First Name:</label>
+                                    <label for="fname">Enter First Name:</label> <!--First name-->
                                     <div class="input-group">
                                         <input type="text" name="fname" id="fname" class="form-control" required/>
                                         <div class="invalid-feedback">
@@ -48,7 +48,7 @@
                                 </div>
                                 <br />
                                 <div class="form-group">
-                                    <label for="lname">Enter Last Name:</label>
+                                    <label for="lname">Enter Last Name:</label><!--Last name-->
                                     <input type="text" name="lname" id="lname" class="form-control" required/>
                                     <div class="invalid-feedback">
                                         Please enter a valid last name.
@@ -56,7 +56,7 @@
                                 </div>
                                 <br />
                                 <div class="form-group">
-                                    <label for="phonenumber">Enter Phone Number(s):</label>
+                                    <label for="phonenumber">Enter Phone Number(s):</label><!--Phone number-->
                                     <div id="addNewNumField">
                                         <div class="row">
                                             <div class="col-sm-10">
@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Enter Email(s):</label>
+                                    <label for="email">Enter Email(s):</label><!--Email-->
                                     <div id="addNewEmailField">
                                         <div class="row">
                                             <div class="col-sm-10">

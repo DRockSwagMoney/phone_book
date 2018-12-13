@@ -13,6 +13,7 @@
     $resultnum = $conn->query($phonenumbersql);
     $resultemail = $conn->query($emailsql);
 
+    //The Output variable will display inside of the view modal
     $output .= '<div id="viewContact" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">';

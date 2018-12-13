@@ -1,8 +1,3 @@
-$(document).ready(function () {
-
-
-});
-
 //View modal
 $(document).on('click', '#btn_view', function () {
     var id = $(this).data("id3");
