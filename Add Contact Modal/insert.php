@@ -2,6 +2,7 @@
     //Create Connection
     include '../PHP/connect.php';
 
+    //Prepared statements for the inputs from the forms
     $names = $conn->prepare("INSERT INTO $tablename (firstname, lastname)
                             VALUES (?, ?)");
     $names->bind_param("ss", $firstname, $lastname);

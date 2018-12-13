@@ -23,8 +23,8 @@ $(document).on('click', '#closeemail', function () {
 
 $(document).on('click', '#insert', function () {
     event.preventDefault();
-    resetEntries();
-
+    resetEntries();//Resets counter
+    //Validation of each field
     fnameValidation($('#fname').val());
     lnameValidation($('#lname').val());
 
@@ -38,7 +38,7 @@ $(document).on('click', '#insert', function () {
 
     testEmailForTrue = emailValidate.every(testTrue);
     if (fnameValidate === false || lnameValidate === false || testNumForTrue === false || testEmailForTrue === false) {
-        addValidation();
+        addValidation(); //Adds css to valid/invalid fields
         return false;
     } else  {
         $.ajax({
@@ -82,13 +82,11 @@ function fnameValidation(inputtxt) {
 
     if (inputtxt == "") {
         fnameValidate = false;
-        //alert("Enter First Name");
         return fnameValidate;
     }
 
     else if (result === false) {
         fnameValidate = false;
-        //alert("Enter Valid First Name");
         return fnameValidate;
     }
 
@@ -102,13 +100,11 @@ function lnameValidation(inputtxt) {
 
     if (inputtxt == "") {
         lnameValidate = false;
-        //alert("Enter Last Name");
         return lnameValidate;
     }
 
     else if (result === false) {
         lnameValidate = false;
-        //alert("Enter Valid Last Name");
         return lnameValidate;
     }
 }
@@ -121,13 +117,11 @@ function phoneValidation(inputtxt) {
 
     if (inputtxt == "") {
         numValidate.push(false);
-        //alert("Enter Phone Number");
         return numValidate;
     }
 
     else if (result === false) {
         numValidate.push(false);
-       //alert("Enter Valid Phone Number");
         return numValidate;
     } else {
         numValidate.push(true);
@@ -143,13 +137,11 @@ function emailValidation(inputtxt) {
 
     if (inputtxt == "") {
         emailValidate.push(false);
-        //alert("Enter Email");
         return emailValidate;
     }
 
     else if (result === false) {
         emailValidate.push(false);
-        //alert("Enter Valid Email");
         return emailValidate;
     } else {
         emailValidate.push(true);

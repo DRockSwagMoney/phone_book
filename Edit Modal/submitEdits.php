@@ -48,7 +48,7 @@
         //Updates the names
         $names->execute();
 
-        //Each PHONE NUMBER will be updated accordingly
+        //Each phone number will be updated accordingly
         foreach($numid as $numidvalue) {
             $phonenumbervalue = $phonenumber[$y];
             $numbers->execute();
@@ -61,7 +61,7 @@
             }
         }
 
-        //Each EMAIL will be updated accordingly
+        //Each email will be updated accordingly
         foreach($emailid as $emailidvalue) {
             $emailvalue = $email[$z];
             $emails->execute();

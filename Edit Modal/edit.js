@@ -1,8 +1,3 @@
-$(document).ready(function () {
-
-
-});
-
 //Edit modal
 $(document).on('click', '#btn_edit', function () {
     var id = $(this).data("id4");
@@ -102,7 +97,6 @@ $(document).on('click', '#saveChanges', function () {
                 type: "POST",
                 data: { deleteNumberId: deleteNumberId },
                 success: function (data) {
-                    alert(data);
                 }
             });
         }
@@ -114,7 +108,6 @@ $(document).on('click', '#saveChanges', function () {
                 type: "POST",
                 data: { deleteEmailId: deleteEmailId },
                 success: function (data) {
-                    alert(data);
                 }
             });
         }
@@ -136,14 +129,14 @@ $(document).on('click', '#saveChanges', function () {
     }
 });
 
-//Actual test for edit email button
+//Adds an extra email field when clicking the add button
 $(document).on('click', '#addEditEmail', function () {
     $.get('HTML/editemail.html', function (data) {
         $('#newEditEmailField').append(data);
     });
 });
 
-//Actual test for edit phone number button
+//Adds an extra phone number field when clicking the add button
 $(document).on('click', '#addEditNumber', function () {
     $.get('HTML/editnumber.html', function (data) {
         $('#newEditPhoneNumberField').append(data);
@@ -184,13 +177,11 @@ function editFnameValidation(inputtxt) {
 
     if (inputtxt == "") {
         editFnameValidate = false;
-        //alert("Enter First Name");
         return editFnameValidate;
     }
 
     else if (result === false) {
         editFnameValidate = false;
-        //alert("Enter Valid First Name");
         return editFnameValidate;
     }
 }
@@ -203,13 +194,11 @@ function editLnameValidation(inputtxt) {
 
     if (inputtxt == "") {
         editLnameValidate = false;
-        //alert("Enter Last Name");
         return editLnameValidate;
     }
 
     else if (result === false) {
         editLnameValidate = false;
-        //alert("Enter Valid Last Name");
         return editLnameValidate;
     }
 }
@@ -222,13 +211,11 @@ function editPhoneValidation(inputtxt) {
 
     if (inputtxt == "") {
         editNumValidate.push(false);
-        //alert("Enter Phone Number");
         return editNumValidate;
     }
 
     else if (result === false) {
         editNumValidate.push(false);
-        //alert("Enter Valid Phone Number");
         return editNumValidate;
     } else {
         editNumValidate.push(true);
@@ -245,13 +232,11 @@ function editEmailValidation(inputtxt) {
     console.log(inputtxt);
     if (inputtxt == "") {
         editEmailValidate.push(false);
-        //alert("Enter Email");
         return editEmailValidate;
     }
 
     else if (result === false) {
         editEmailValidate.push(false);
-        //alert("Enter Valid Email");
         return editEmailValidate;
     } else {
         editEmailValidate.push(true);

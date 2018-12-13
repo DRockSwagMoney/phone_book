@@ -3,7 +3,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "test_phonebook"; //Name of database
+    $dbname = "phone_book"; //Name of database
     $tablename = "contact_names"; //Name of table
     $tnnumbers = "phone_numbers"; //Name of the phone numbers table
     $tnemails = "emails"; //Name of the emails table
