@@ -6,11 +6,11 @@
                             VALUES (?, ?)");
     $names->bind_param("ss", $firstname, $lastname);
 
-    $numbers = $conn->prepare("INSERT INTO phone_numbers (userid, number)
+    $numbers = $conn->prepare("INSERT INTO $tnnumbers (userid, number)
                             VALUES (?, ?)");
     $numbers->bind_param("is", $last_id, $numvalue);
 
-    $emails = $conn->prepare("INSERT INTO emails (userid, email)
+    $emails = $conn->prepare("INSERT INTO $tnemails (userid, email)
                             VALUES (?, ?)");
     $emails->bind_param("is", $last_id, $emailvalue);
     
