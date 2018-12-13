@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Second Phone Book</title>
+    <title>Phone Book</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="CSS/default.css">
@@ -23,7 +23,7 @@
             <button class="btn btn-success" data-target="#addContact" data-toggle="modal" type="button">Add Contact</button>
         </div>
         <br/>
-        <div id="records"></div><!--This will show the number of records in the phonebook-->
+        <div id="records"></div><!--This will show the number of records in the phone book-->
         <div id="live_data"></div><!--Select.php that forms the table here-->
         <div id="view_data"></div><!--This is where the view modal will pop up-->
         <div id="edit_data"></div><!--This is where the edit modal will pop up-->
@@ -38,7 +38,7 @@
                         <div class="modal-body">
                             <form method="post" id="insertForm" class="add-validation" novalidate>
                                 <div class="form-group">
-                                    <label for="fname">Enter First Name:</label>
+                                    <label for="fname">Enter First Name:</label> <!--First name-->
                                     <div class="input-group">
                                         <input type="text" name="fname" id="fname" class="form-control" required/>
                                         <div class="invalid-feedback">
@@ -48,7 +48,7 @@
                                 </div>
                                 <br />
                                 <div class="form-group">
-                                    <label for="lname">Enter Last Name:</label>
+                                    <label for="lname">Enter Last Name:</label><!--Last name-->
                                     <input type="text" name="lname" id="lname" class="form-control" required/>
                                     <div class="invalid-feedback">
                                         Please enter a valid last name.
@@ -56,7 +56,7 @@
                                 </div>
                                 <br />
                                 <div class="form-group">
-                                    <label for="phonenumber">Enter Phone Number(s):</label>
+                                    <label for="phonenumber">Enter Phone Number(s):</label><!--Phone number-->
                                     <div id="addNewNumField">
                                         <div class="row">
                                             <div class="col-sm-10">
@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Enter Email(s):</label>
+                                    <label for="email">Enter Email(s):</label><!--Email-->
                                     <div id="addNewEmailField">
                                         <div class="row">
                                             <div class="col-sm-10">

@@ -32,7 +32,7 @@
             }
         } else {
             $output .= '<tr>
-                            <td colspan="5">Data Not Found</td>
+                            <td colspan="5" style="text-align: center">Please add a contact</td>
                         </tr>';
         }
         $output .= '</table>
